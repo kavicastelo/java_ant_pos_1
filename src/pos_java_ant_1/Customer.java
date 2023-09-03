@@ -7,7 +7,9 @@ package pos_java_ant_1;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +22,29 @@ public class Customer extends javax.swing.JPanel {
      */
     public Customer() {
         initComponents();
+        tableLoad();
+    }
+    
+    public void tableLoad(){
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM customer");
+            
+            while (rs.next()) {                
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
     }
 
     /**
@@ -47,6 +72,8 @@ public class Customer extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         csearch = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        csearchtbl = new javax.swing.JTextField();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -151,6 +178,11 @@ public class Customer extends javax.swing.JPanel {
                 "ID", "Name", "Phone"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -189,6 +221,16 @@ public class Customer extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Search :");
+
+        csearchtbl.setText("0");
+        csearchtbl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                csearchtblKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,7 +241,12 @@ public class Customer extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(csearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -207,7 +254,12 @@ public class Customer extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(csearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -240,6 +292,7 @@ public class Customer extends javax.swing.JPanel {
             cname.setText("");
             ctp.setText("");
             JOptionPane.showMessageDialog(null, "User Added Successfully!");
+            tableLoad();
             
         } catch (SQLException e) {
             System.out.println(e);
@@ -285,6 +338,7 @@ public class Customer extends javax.swing.JPanel {
             cname.setText("");
             ctp.setText("");
             JOptionPane.showMessageDialog(null, "User Updated Successfully!");
+            tableLoad();
             
         } catch (SQLException e) {
             System.out.println(e);
@@ -301,16 +355,54 @@ public class Customer extends javax.swing.JPanel {
             cname.setText("");
             ctp.setText("");
             JOptionPane.showMessageDialog(null, "User Deleted Successfully!");
+            tableLoad();
             
         } catch (SQLException e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        String id = jTable1.getValueAt(row, 0).toString();
+        String name = jTable1.getValueAt(row, 1).toString();
+        String tp = jTable1.getValueAt(row, 2).toString();
+        
+        csearch.setText(id);
+        cname.setText(name);
+        ctp.setText(tp);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void csearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblKeyReleased
+        // TODO add your handling code here:
+        String name = csearchtbl.getText();
+            
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM customer WHERE name LIKE '%"+name+"%'");
+            
+            while (rs.next()) {                
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_csearchtblKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cname;
     private javax.swing.JTextField csearch;
+    private javax.swing.JTextField csearchtbl;
     private javax.swing.JTextField ctp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -320,6 +412,7 @@ public class Customer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
