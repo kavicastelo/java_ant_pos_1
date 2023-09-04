@@ -4,8 +4,10 @@
  */
 package pos_java_ant_1;
 
+import java.awt.HeadlessException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -18,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class sales extends javax.swing.JPanel {
 
     public static String bar_code;
+    public static String customer_ID;
     /**
      * Creates new form sales
      */
@@ -62,6 +65,21 @@ public class sales extends javax.swing.JPanel {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        //set invoice id and increment
+        try {
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM extra WHERE xid=1");
+            
+            if (rs.next()) {
+                inid.setText(rs.getString("val"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        int i = Integer.valueOf(inid.getText());
+        i++;
+        inid.setText(String.valueOf(i));
     }
 
     public void calculate_total(){
@@ -75,13 +93,20 @@ public class sales extends javax.swing.JPanel {
     public void total(){
         int rowcount = jTable1.getRowCount();
         double total = 0;
+        int qty = 0;
         
         for (int i = 0; i < rowcount; i++) {
             double val = Double.valueOf(jTable1.getValueAt(i, 5).toString());
             total += val;
         }
         
+        for (int i = 0; i < rowcount; i++) {
+            double val = Double.valueOf(jTable1.getValueAt(i, 3).toString());
+            qty += val;
+        }
+        
         tot.setText(Double.toString(total));
+        tot_qty.setText(Integer.toString(qty));
     }
     
     public void pay(){
@@ -132,6 +157,8 @@ public class sales extends javax.swing.JPanel {
         tot = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         balance = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tot_qty = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,6 +208,11 @@ public class sales extends javax.swing.JPanel {
         unit_price.setText("00");
 
         customer_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        customer_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customer_comboActionPerformed(evt);
+            }
+        });
 
         product_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         product_combo.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +242,7 @@ public class sales extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(customer_combo, 0, 211, Short.MAX_VALUE)
+                .addComponent(customer_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -386,16 +418,25 @@ public class sales extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel2.setText("Total QTY :");
+
+        tot_qty.setText("00");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tot_qty, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -405,14 +446,24 @@ public class sales extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(payment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(payment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(tot_qty))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setText("Pay & Print");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -548,6 +599,83 @@ public class sales extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_paymentKeyReleased
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        try {
+            //`cid`, `inid`, `prod_name`, `bar`, `qty`, `unit_price`, `total_price`
+            DefaultTableModel tm = (DefaultTableModel)jTable1.getModel();
+            int row_count = jTable1.getRowCount();
+            
+            for (int i = 0; i < row_count; i++) {
+                String inid = tm.getValueAt(i, 0).toString();
+                String name = tm.getValueAt(i, 1).toString();
+                String bar = tm.getValueAt(i, 2).toString();
+                String qty = tm.getValueAt(i, 3).toString();
+                String u_price = tm.getValueAt(i, 4).toString();
+                String tot_price = tm.getValueAt(i, 5).toString();
+                
+                Statement s = db.myCon().createStatement();
+                //cart table
+                s.executeUpdate("INSERT INTO cart (inid, prod_name, bar, qty, unit_price, total_price) VALUES ('"+inid+"','"+name+"','"+bar+"','"+qty+"','"+u_price+"','"+tot_price+"')");
+            }
+            
+            //`sid`, `inid`, `cid`, `c_name`, `t_qty`, `bill`, `status`, `bal`
+            try {
+                String iid = inid.getText();
+                String name = customer_combo.getSelectedItem().toString();
+                String t_qty = tot_qty.getText();
+                String bill = tot.getText();
+                String bal = balance.getText();
+                String status = null;
+                
+                Double total = Double.valueOf(tot.getText());
+                Double paid = Double.valueOf(payment.getText());
+                if (paid.equals(0.0)) {
+                    status = "unpaid";
+                } else if (total>paid) {
+                    status = "partial";
+                } else if (total<=paid) {
+                    status = "paid";
+                }
+                
+                Statement s = db.myCon().createStatement();
+                //sales table
+                s.executeUpdate("INSERT INTO sales (inid, cid, c_name, t_qty, bill, status, bal) VALUES ('"+iid+"','"+customer_ID+"','"+name+"','"+t_qty+"','"+bill+"','"+status+"','"+bal+"')");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Select customer again and retry!");
+            }
+            
+            try {
+                String current_id = inid.getText();
+                
+                Statement s = db.myCon().createStatement();
+                s.executeUpdate("UPDATE extra SET val = '"+current_id+"' WHERE xid = 1");
+            } catch (Exception e) {
+            }
+            
+            JOptionPane.showMessageDialog(null, "Cart Added");
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void customer_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customer_comboActionPerformed
+        // TODO add your handling code here:
+        String name = customer_combo.getSelectedItem().toString();
+       
+        try {
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM customer WHERE name='"+name+"'");
+            
+            if (rs.next()) {
+                customer_ID = rs.getString("cid");
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_customer_comboActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balance;
@@ -559,6 +687,7 @@ public class sales extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -580,6 +709,7 @@ public class sales extends javax.swing.JPanel {
     private javax.swing.JTextField qty;
     private javax.swing.JLabel tot;
     private javax.swing.JLabel tot_price;
+    private javax.swing.JLabel tot_qty;
     private javax.swing.JLabel unit_price;
     // End of variables declaration//GEN-END:variables
 }
