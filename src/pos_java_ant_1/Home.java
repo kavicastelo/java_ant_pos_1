@@ -101,6 +101,11 @@ public class Home extends javax.swing.JFrame {
         jToggleButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
         jToggleButton8.setText("Invoice");
+        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,6 +238,12 @@ public class Home extends javax.swing.JFrame {
         sales s = new sales();
         JPLoad.jPanelLoader(panel_load, s);
     }//GEN-LAST:event_jToggleButton7ActionPerformed
+
+    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+        // TODO add your handling code here:
+        Invoice in = new Invoice();
+        JPLoad.jPanelLoader(panel_load, in);
+    }//GEN-LAST:event_jToggleButton8ActionPerformed
 
     /**
      * @param args the command line arguments
