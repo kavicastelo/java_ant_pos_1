@@ -163,10 +163,10 @@ public class sales extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("INVOICE NO :");
 
-        inid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        inid.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         inid.setText("01");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -183,7 +183,7 @@ public class sales extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(inid))
@@ -192,21 +192,22 @@ public class sales extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Customer :");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Product :");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Qty :");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Unit Price :");
 
-        unit_price.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        unit_price.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         unit_price.setText("00");
 
+        customer_combo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         customer_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         customer_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +215,7 @@ public class sales extends javax.swing.JPanel {
             }
         });
 
+        product_combo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         product_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         product_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +223,7 @@ public class sales extends javax.swing.JPanel {
             }
         });
 
+        qty.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qty.setText("0");
         qty.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -228,10 +231,10 @@ public class sales extends javax.swing.JPanel {
             }
         });
 
-        tot_price.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tot_price.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tot_price.setText("00");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Total Price :");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -293,6 +296,7 @@ public class sales extends javax.swing.JPanel {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -301,6 +305,7 @@ public class sales extends javax.swing.JPanel {
                 "INID", "Name", "Bar Code ", "QTY", "Unit Price", "Total Price"
             }
         ));
+        jTable1.setRowHeight(24);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -311,7 +316,7 @@ public class sales extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -363,9 +368,10 @@ public class sales extends javax.swing.JPanel {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Payed Ammount :");
 
+        payment.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         payment.setText("0");
         payment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -375,17 +381,17 @@ public class sales extends javax.swing.JPanel {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("Total Ammount :");
 
-        tot.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tot.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tot.setText("00.00");
         tot.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setText("Balance/Due :");
 
-        balance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        balance.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         balance.setText("00.00");
         balance.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -457,7 +463,7 @@ public class sales extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton4.setText("Pay & Print");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,7 +502,7 @@ public class sales extends javax.swing.JPanel {
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
