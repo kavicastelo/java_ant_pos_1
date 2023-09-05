@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3bec0d89-62c7-439e-866d-62c636a26adc">
-	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.zoom" value="2.357947691000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="9"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -60,36 +60,36 @@ FROM
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="69" height="15" uuid="a3153f17-fa0b-4bba-a8dd-b5e4fb14cc31"/>
-				<text><![CDATA[sales_sid]]></text>
+				<reportElement style="Column header" x="0" y="19" width="46" height="15" uuid="a3153f17-fa0b-4bba-a8dd-b5e4fb14cc31"/>
+				<text><![CDATA[sale_id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="69" y="19" width="69" height="15" uuid="d82b15ad-54e6-4939-af63-3ac8422fbec6"/>
-				<text><![CDATA[sales_inid]]></text>
+				<reportElement style="Column header" x="48" y="19" width="34" height="15" uuid="d82b15ad-54e6-4939-af63-3ac8422fbec6"/>
+				<text><![CDATA[in_id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="138" y="19" width="69" height="15" uuid="fda19aa2-62c7-421a-8e8f-b15a7f270b4c"/>
-				<text><![CDATA[sales_cid]]></text>
+				<reportElement style="Column header" x="82" y="19" width="79" height="15" uuid="fda19aa2-62c7-421a-8e8f-b15a7f270b4c"/>
+				<text><![CDATA[customer_id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="207" y="19" width="69" height="15" uuid="194f2dde-0ddf-45c6-a663-99755c447450"/>
-				<text><![CDATA[sales_c_name]]></text>
+				<reportElement style="Column header" x="161" y="19" width="86" height="15" uuid="194f2dde-0ddf-45c6-a663-99755c447450"/>
+				<text><![CDATA[customer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="276" y="19" width="69" height="15" uuid="ed071748-2c0b-4aa5-bd56-67cfae4a3520"/>
-				<text><![CDATA[sales_t_qty]]></text>
+				<reportElement style="Column header" x="247" y="19" width="81" height="15" uuid="ed071748-2c0b-4aa5-bd56-67cfae4a3520"/>
+				<text><![CDATA[total_qty]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="345" y="19" width="69" height="15" uuid="486a572c-73ed-4016-9684-55d4b0fd96c5"/>
-				<text><![CDATA[sales_bill]]></text>
+				<reportElement style="Column header" x="328" y="19" width="86" height="15" uuid="486a572c-73ed-4016-9684-55d4b0fd96c5"/>
+				<text><![CDATA[bill]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="414" y="19" width="69" height="15" uuid="87559f0d-34ef-41ce-9ce6-47048e279538"/>
-				<text><![CDATA[sales_status]]></text>
+				<text><![CDATA[status]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="483" y="19" width="69" height="15" uuid="f7069a04-67e1-4a84-aa3b-9ccaaa94deeb"/>
-				<text><![CDATA[sales_bal]]></text>
+				<text><![CDATA[balance]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -102,27 +102,23 @@ FROM
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="69" height="15" uuid="ade420d1-8bc8-430c-aec5-af2db94ce656"/>
+				<reportElement style="Detail" x="0" y="0" width="46" height="15" uuid="ade420d1-8bc8-430c-aec5-af2db94ce656"/>
 				<textFieldExpression><![CDATA[$F{sales_sid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="69" y="0" width="69" height="15" uuid="4f0a0776-e697-4d9b-85b7-6aae4b602496"/>
+				<reportElement style="Detail" x="48" y="0" width="34" height="15" uuid="4f0a0776-e697-4d9b-85b7-6aae4b602496"/>
 				<textFieldExpression><![CDATA[$F{sales_inid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="138" y="0" width="69" height="15" uuid="62170b5c-8867-48d9-ab54-7d0340221a11"/>
+				<reportElement style="Detail" x="82" y="0" width="79" height="15" uuid="62170b5c-8867-48d9-ab54-7d0340221a11"/>
 				<textFieldExpression><![CDATA[$F{sales_cid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="207" y="0" width="69" height="15" uuid="8b2e288c-04e2-499c-bca3-ff12a2bb7297"/>
+				<reportElement style="Detail" x="161" y="0" width="86" height="15" uuid="8b2e288c-04e2-499c-bca3-ff12a2bb7297"/>
 				<textFieldExpression><![CDATA[$F{sales_c_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="276" y="0" width="69" height="15" uuid="be51af1d-92d6-4cd1-b776-9e70b17a7861"/>
-				<textFieldExpression><![CDATA[$F{sales_t_qty}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="345" y="0" width="69" height="15" uuid="f34aae68-06c4-4487-8175-d5996186d745"/>
+				<reportElement style="Detail" x="328" y="0" width="86" height="15" uuid="f34aae68-06c4-4487-8175-d5996186d745"/>
 				<textFieldExpression><![CDATA[$F{sales_bill}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -132,6 +128,10 @@ FROM
 			<textField>
 				<reportElement style="Detail" x="483" y="0" width="69" height="15" uuid="999f93b3-9ed2-4b19-96fb-dc7cc9b85f15"/>
 				<textFieldExpression><![CDATA[$F{sales_bal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="247" y="0" width="81" height="15" uuid="be51af1d-92d6-4cd1-b776-9e70b17a7861"/>
+				<textFieldExpression><![CDATA[$F{sales_t_qty}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

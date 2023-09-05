@@ -4,6 +4,8 @@
  */
 package pos_java_ant_1;
 
+import java.util.HashMap;
+
 /**
  *
  * @author KAVI
@@ -28,7 +30,7 @@ public class Reports extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        qty = new javax.swing.JTextField();
+        para_inid = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -37,15 +39,20 @@ public class Reports extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("INVOICE NO :");
 
-        qty.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        qty.setText("0");
-        qty.addKeyListener(new java.awt.event.KeyAdapter() {
+        para_inid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        para_inid.setText("0");
+        para_inid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                qtyKeyReleased(evt);
+                para_inidKeyReleased(evt);
             }
         });
 
         jButton1.setText("View");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("View All Sales");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +71,7 @@ public class Reports extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(para_inid, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addComponent(jButton2))
@@ -77,7 +84,7 @@ public class Reports extends javax.swing.JPanel {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(para_inid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jButton1))
                 .addGap(31, 31, 31))
@@ -101,10 +108,10 @@ public class Reports extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void qtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyKeyReleased
+    private void para_inidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_para_inidKeyReleased
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_qtyKeyReleased
+    }//GEN-LAST:event_para_inidKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -116,12 +123,22 @@ public class Reports extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //parameter name from report = invo_para
+        HashMap map = new HashMap();
+        map.put("invo_para", para_inid.getText());
+        
+        ReportView rw = new ReportView("src\\reports\\reportsearch.jasper",map);
+        rw.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField qty;
+    private javax.swing.JTextField para_inid;
     // End of variables declaration//GEN-END:variables
 }
