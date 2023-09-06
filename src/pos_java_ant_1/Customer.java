@@ -42,7 +42,7 @@ public class Customer extends javax.swing.JPanel {
                 dt.addRow(v);
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "No data to load");
         }
         
     }

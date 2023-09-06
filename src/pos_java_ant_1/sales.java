@@ -8,6 +8,7 @@ import java.awt.HeadlessException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -656,12 +657,27 @@ public class sales extends javax.swing.JPanel {
                 
                 Statement s = db.myCon().createStatement();
                 s.executeUpdate("UPDATE extra SET val = '"+current_id+"' WHERE xid = 1");
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                System.out.println(e);
             }
             
             JOptionPane.showMessageDialog(null, "Cart Added");
+            data_load();
         } catch (HeadlessException | SQLException e) {
             System.out.println(e);
+        }
+        
+        //print bill
+        try {
+            int i = Integer.valueOf(inid.getText());
+            int id_val = i-1;
+                    
+            HashMap map = new HashMap();
+            map.put("cart_id_para", id_val);
+        
+            ReportView rw = new ReportView("src\\reports\\print.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
