@@ -260,7 +260,7 @@ public class Employee extends javax.swing.JPanel {
         csearch.setText("0");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("Customers Information :");
+        jLabel4.setText("Employees Information :");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
