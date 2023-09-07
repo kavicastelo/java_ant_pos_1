@@ -18,7 +18,6 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setFont(new Font("Arial", Font.PLAIN, 24));
         try {
-//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 24));
             UIManager.put("Label.font", new Font("Arial", Font.PLAIN, 24));
         } catch (Exception e) {
@@ -37,6 +36,7 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         home_btn_grp = new javax.swing.ButtonGroup();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
@@ -45,9 +45,21 @@ public class Home extends javax.swing.JFrame {
         jToggleButton6 = new javax.swing.JToggleButton();
         jToggleButton7 = new javax.swing.JToggleButton();
         jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panel_load = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +135,16 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        home_btn_grp.add(jToggleButton9);
+        jToggleButton9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
+        jToggleButton9.setText("GRN");
+        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,7 +158,8 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -154,6 +177,8 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jToggleButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -196,6 +221,43 @@ public class Home extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jMenu1.setText("File");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem1.setText("jMenuItem1");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem2.setText("jMenuItem2");
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem3.setText("jMenuItem3");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem4.setText("jMenuItem4");
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Report");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem6.setText("jMenuItem6");
+        jMenu3.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,7 +281,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,6 +329,12 @@ public class Home extends javax.swing.JFrame {
         JPLoad.jPanelLoader(panel_load, r);
     }//GEN-LAST:event_jToggleButton6ActionPerformed
 
+    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+        // TODO add your handling code here:
+        Grn g = new Grn();
+        JPLoad.jPanelLoader(panel_load, g);
+    }//GEN-LAST:event_jToggleButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +373,16 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup home_btn_grp;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -315,6 +393,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JPanel panel_load;
     // End of variables declaration//GEN-END:variables
 }
