@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,7 @@ public class Product extends javax.swing.JPanel {
     public Product() {
         initComponents();
         tableLoad();
+        load_supliers();
     }
     
     public void tableLoad(){
@@ -41,6 +43,8 @@ public class Product extends javax.swing.JPanel {
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
                 v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
                 
                 dt.addRow(v);
             }
@@ -48,6 +52,25 @@ public class Product extends javax.swing.JPanel {
             System.out.println(e);
         }
         
+    }
+    
+    public void load_supliers(){
+        try {
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier");
+            Vector v = new Vector();
+            
+            while (rs.next()) {
+                v.add(rs.getString("name"));
+            
+                DefaultComboBoxModel cmb = new DefaultComboBoxModel(v);
+                sup_cmb.setModel(cmb);
+            }
+            
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No suppliers to show");
+        }
     }
 
     /**
@@ -75,6 +98,10 @@ public class Product extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        sell_price = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        sup_cmb = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -90,7 +117,7 @@ public class Product extends javax.swing.JPanel {
         jLabel1.setText("Name :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Price :");
+        jLabel2.setText("Buy price :");
 
         pname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pname.setText("0");
@@ -110,6 +137,7 @@ public class Product extends javax.swing.JPanel {
         pqty.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pqty.setText("0");
 
+        psup.setEditable(false);
         psup.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         psup.setText("0");
 
@@ -152,6 +180,23 @@ public class Product extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setText("Sell price :");
+
+        sell_price.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sell_price.setText("0");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setText("Supplier :");
+
+        sup_cmb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sup_cmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        sup_cmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sup_cmbActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -177,9 +222,17 @@ public class Product extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(pqty, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(psup, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sell_price, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel10))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(sup_cmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(psup, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,19 +260,27 @@ public class Product extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sell_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(pqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(psup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sup_cmb))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7)
                     .addComponent(jButton8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -228,7 +289,7 @@ public class Product extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Barcode", "Price", "Qty", "Supplier ID"
+                "ID", "Name", "Barcode", "Buy Price", "Sell Price", "Qty", "Supplier ID", "Supplier"
             }
         ));
         jTable1.setRowHeight(24);
@@ -296,34 +357,30 @@ public class Product extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(145, 145, 145))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(164, 164, 164))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(130, 130, 130))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -334,9 +391,7 @@ public class Product extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -345,22 +400,26 @@ public class Product extends javax.swing.JPanel {
         String name = pname.getText();
         String bar = pbar.getText();
         String price = pprice.getText();
+        String sell = sell_price.getText();
         String qty = pqty.getText();
         String sup = psup.getText();
+        String s_name = sup_cmb.getSelectedItem().toString();
         
         try {
             Statement s = db.myCon().createStatement();
-            s.executeUpdate(" INSERT INTO product (name,bar,price,qty,sup) VALUES ('"+name+"','"+bar+"','"+price+"','"+qty+"','"+sup+"')");
+            s.executeUpdate(" INSERT INTO product (name,bar,price,sell_p,qty,sup,sup_name) VALUES ('"+name+"','"+bar+"','"+price+"','"+sell+"','"+qty+"','"+sup+"','"+s_name+"')");
             pname.setText("");
             pbar.setText("");
             pprice.setText("");
+            sell_price.setText("");
             pqty.setText("");
             psup.setText("");
+            sup_cmb.setSelectedItem("");
             JOptionPane.showMessageDialog(null, "Product Added Successfully!");
             tableLoad();
             
         } catch (SQLException e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Fill all the data fields correctly and try again!");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -377,15 +436,19 @@ public class Product extends javax.swing.JPanel {
                     pname.setText(rs.getString("name"));
                     pbar.setText(rs.getString("bar"));
                     pprice.setText(rs.getString("price"));
+                    sell_price.setText(rs.getString("sell_p"));
                     pqty.setText(rs.getString("qty"));
                     psup.setText(rs.getString("sup"));
+                    sup_cmb.setSelectedItem(rs.getString("sup_name"));
                 }
                 else{
                     pname.setText("");
                     pbar.setText("");
                     pprice.setText("");
+                    sell_price.setText("");
                     pqty.setText("");
                     psup.setText("");
+                    sup_cmb.setSelectedItem("");
                     JOptionPane.showMessageDialog(null, "Product not found!");
                 }
             } else {
@@ -403,22 +466,27 @@ public class Product extends javax.swing.JPanel {
         String bar = pbar.getText();
         String qty = pqty.getText();
         String price = pprice.getText();
+        String sell = sell_price.getText();
         String sup = psup.getText();
         String id = psearch.getText();
+        String s_name = sup_cmb.getSelectedItem().toString();
         
         try {
             Statement s = db.myCon().createStatement();
-            s.executeUpdate(" UPDATE supplier SET name='"+name+"', bar='"+bar+"', qty='"+qty+"', price='"+price+"', sup='"+sup+"' WHERE pid='"+id+"'");
+            s.executeUpdate(" UPDATE product SET name='"+name+"', bar='"+bar+"', qty='"+qty+"', price='"+price+"', sell_p='"+sell+"', sup='"+sup+"', sup_name='"+s_name+"' WHERE pid='"+id+"'");
             pname.setText("");
             pbar.setText("");
             pprice.setText("");
+            sell_price.setText("");
             pqty.setText("");
             psup.setText("");
+            sup_cmb.setSelectedItem("");
+            psearch.setText("");
             JOptionPane.showMessageDialog(null, "Product Updated Successfully!");
             tableLoad();
             
         } catch (SQLException e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "product not updated! try again");
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -432,13 +500,16 @@ public class Product extends javax.swing.JPanel {
             pname.setText("");
             pbar.setText("");
             pprice.setText("");
+            sell_price.setText("");
             pqty.setText("");
             psup.setText("");
+            sup_cmb.setSelectedItem("");
+            psearch.setText("");
             JOptionPane.showMessageDialog(null, "Product Deleted Successfully!");
             tableLoad();
             
         } catch (SQLException e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Delete failed!");
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -449,15 +520,19 @@ public class Product extends javax.swing.JPanel {
         String name = jTable1.getValueAt(row, 1).toString();
         String bar = jTable1.getValueAt(row, 2).toString();
         String price = jTable1.getValueAt(row, 3).toString();
-        String qty = jTable1.getValueAt(row, 4).toString();
-        String sup = jTable1.getValueAt(row, 5).toString();
+        String sell = jTable1.getValueAt(row, 4).toString();
+        String qty = jTable1.getValueAt(row, 5).toString();
+        String sup = jTable1.getValueAt(row, 6).toString();
+        String s_name = jTable1.getValueAt(row, 7).toString();
         
         psearch.setText(id);
         pname.setText(name);
         pbar.setText(bar);
         pprice.setText(price);
+        sell_price.setText(sell);
         pqty.setText(qty);
         psup.setText(sup);
+        sup_cmb.setSelectedItem(s_name);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void psearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psearchtblKeyReleased
@@ -479,6 +554,8 @@ public class Product extends javax.swing.JPanel {
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
                 v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
                 
                 dt.addRow(v);
             }
@@ -487,6 +564,23 @@ public class Product extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_psearchtblKeyReleased
 
+    private void sup_cmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_cmbActionPerformed
+        // TODO add your handling code here:
+        String name = sup_cmb.getSelectedItem().toString();
+        try {
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE name = '"+name+"'");
+            
+            if (rs.next()) {
+                psup.setText(rs.getString("sid"));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ID not found");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_sup_cmbActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
@@ -494,6 +588,7 @@ public class Product extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -501,6 +596,7 @@ public class Product extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -513,5 +609,7 @@ public class Product extends javax.swing.JPanel {
     private javax.swing.JTextField psearch;
     private javax.swing.JTextField psearchtbl;
     private javax.swing.JTextField psup;
+    private javax.swing.JTextField sell_price;
+    private javax.swing.JComboBox<String> sup_cmb;
     // End of variables declaration//GEN-END:variables
 }
