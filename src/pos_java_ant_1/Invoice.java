@@ -61,7 +61,7 @@ public class Invoice extends javax.swing.JPanel {
             dt.setRowCount(0);
             
             Statement s = db.myCon().createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM sales WHERE inid LIKE '%"+INID+"%' AND c_name LIKE '"+name+"%' AND status = '"+Status+"'");
+            ResultSet rs = s.executeQuery("SELECT * FROM sales WHERE inid LIKE '%"+INID+"%' AND c_name LIKE '%"+name+"%' AND status LIKE '"+Status+"'");
             
             while (rs.next()) {
                 Vector v = new Vector();
