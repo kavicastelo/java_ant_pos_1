@@ -415,7 +415,7 @@ public class Supplier extends javax.swing.JPanel {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Customer", jPanel3);
+        jTabbedPane1.addTab("Add Supplier", jPanel3);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Search (Organization) :");
@@ -527,7 +527,7 @@ public class Supplier extends javax.swing.JPanel {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Search Customer", jPanel4);
+        jTabbedPane1.addTab("Search Supplier", jPanel4);
 
         jButton5.setText("All Suppliers");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
