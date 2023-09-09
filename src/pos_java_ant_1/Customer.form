@@ -168,10 +168,12 @@
                                   <Component id="cname" max="32767" attributes="0"/>
                                   <Component id="addr" max="32767" attributes="0"/>
                                   <Component id="type" min="-2" pref="208" max="-2" attributes="0"/>
-                                  <Component id="addr1" max="32767" attributes="0"/>
-                                  <Component id="type1" min="-2" pref="208" max="-2" attributes="0"/>
+                                  <Component id="bank" max="32767" attributes="0"/>
+                                  <Component id="city" min="-2" pref="208" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="addr_check" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -197,16 +199,17 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="type" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addr_check" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addr1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bank" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="type1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="city" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="29" max="32767" attributes="0"/>
                           </Group>
@@ -278,7 +281,7 @@
                         <Property name="text" type="java.lang.String" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="addr1">
+                    <Component class="javax.swing.JTextField" name="bank">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="18" style="0"/>
@@ -286,7 +289,7 @@
                         <Property name="text" type="java.lang.String" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="type1">
+                    <Component class="javax.swing.JTextField" name="city">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="18" style="0"/>
@@ -309,6 +312,14 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="City :"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="addr_check">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="use billing address"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addr_checkActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -578,7 +589,7 @@
                                   <Component id="csearchtbl" min="-2" pref="208" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" alignment="0" pref="979" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="1075" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -632,14 +643,19 @@
                           <Font name="Tahoma" size="18" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="12" rowCount="0">
                             <Column editable="true" title="ID" type="java.lang.Object"/>
                             <Column editable="true" title="Name" type="java.lang.Object"/>
                             <Column editable="true" title="Phone" type="java.lang.Object"/>
                             <Column editable="true" title="Address" type="java.lang.Object"/>
-                            <Column editable="true" title="Type" type="java.lang.Object"/>
+                            <Column editable="true" title="Ship Address" type="java.lang.Object"/>
+                            <Column editable="true" title="Bank" type="java.lang.Object"/>
+                            <Column editable="true" title="City" type="java.lang.Object"/>
+                            <Column editable="true" title="Person name" type="java.lang.Object"/>
                             <Column editable="true" title="Contact per." type="java.lang.Object"/>
                             <Column editable="true" title="Contact per. tp" type="java.lang.Object"/>
+                            <Column editable="true" title="Contact per. email" type="java.lang.Object"/>
+                            <Column editable="true" title="Contact per. online" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="4"/>

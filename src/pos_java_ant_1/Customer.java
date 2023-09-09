@@ -42,6 +42,11 @@ public class Customer extends javax.swing.JPanel {
                 v.add(rs.getString(5));
                 v.add(rs.getString(6));
                 v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
                 
                 dt.addRow(v);
             }
@@ -75,10 +80,11 @@ public class Customer extends javax.swing.JPanel {
         addr = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         type = new javax.swing.JTextField();
-        addr1 = new javax.swing.JTextField();
-        type1 = new javax.swing.JTextField();
+        bank = new javax.swing.JTextField();
+        city = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        addr_check = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         con_name = new javax.swing.JTextField();
@@ -138,17 +144,24 @@ public class Customer extends javax.swing.JPanel {
         type.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         type.setText("0");
 
-        addr1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        addr1.setText("0");
+        bank.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bank.setText("0");
 
-        type1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        type1.setText("0");
+        city.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        city.setText("0");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel10.setText("Bank Acc. No. :");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setText("City :");
+
+        addr_check.setText("use billing address");
+        addr_check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addr_checkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,9 +182,11 @@ public class Customer extends javax.swing.JPanel {
                     .addComponent(cname)
                     .addComponent(addr)
                     .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addr1)
-                    .addComponent(type1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(bank)
+                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addr_check)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,15 +206,16 @@ public class Customer extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addr_check))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(addr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(type1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -404,7 +420,7 @@ public class Customer extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Phone", "Address", "Type", "Contact per.", "Contact per. tp"
+                "ID", "Name", "Phone", "Address", "Ship Address", "Bank", "City", "Person name", "Contact per.", "Contact per. tp", "Contact per. email", "Contact per. online"
             }
         ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -429,7 +445,7 @@ public class Customer extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(csearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1075, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -478,19 +494,29 @@ public class Customer extends javax.swing.JPanel {
         String name = cname.getText();
         String tp = ctp.getText();
         String adr = addr.getText();
-        String typ = type.getText();
+        String ship = type.getText();
         String c_per = con_name.getText();
         String c_tp = con_tp.getText();
+        String bnk = bank.getText();
+        String cty = city.getText();
+        String c_name = cname2.getText();
+        String c_email = con_email.getText();
+        String c_online = con_online.getText();
         
         try {
             Statement s = db.myCon().createStatement();
-            s.executeUpdate(" INSERT INTO customer (name,tp,addr,type,c_per,c_tp) VALUES ('"+name+"','"+tp+"','"+adr+"','"+typ+"','"+c_per+"','"+c_tp+"')");
+            s.executeUpdate(" INSERT INTO customer (name,tp,addr,shipping_addr,bank,city,c_name,c_per,c_tp,c_email,c_online) VALUES ('"+name+"','"+tp+"','"+adr+"','"+ship+"','"+bnk+"','"+cty+"','"+c_name+"','"+c_per+"','"+c_tp+"','"+c_email+"','"+c_online+"')");
             cname.setText("");
             ctp.setText("");
             addr.setText("");
             type.setText("");
             con_name.setText("");
             con_tp.setText("");
+            bank.setText("");
+            city.setText("");
+            cname2.setText("");
+            con_email.setText("");
+            con_online.setText("");
             JOptionPane.showMessageDialog(null, "User Added Successfully!");
             tableLoad();
             
@@ -512,9 +538,14 @@ public class Customer extends javax.swing.JPanel {
                     cname.setText(rs.getString("name"));
                     ctp.setText(rs.getString("tp"));
                     addr.setText(rs.getString("addr"));
-                    type.setText(rs.getString("type"));
+                    type.setText(rs.getString("shipping_addr"));
                     con_name.setText(rs.getString("c_per"));
                     con_tp.setText(rs.getString("c_tp"));
+                    bank.setText("bank");
+                    city.setText("city");
+                    cname2.setText("c_name");
+                    con_email.setText("c_email");
+                    con_online.setText("c_online");
                 }
                 else{
                     cname.setText("");
@@ -523,6 +554,11 @@ public class Customer extends javax.swing.JPanel {
                     type.setText("");
                     con_name.setText("");
                     con_tp.setText("");
+                    bank.setText("");
+                    city.setText("");
+                    cname2.setText("");
+                    con_email.setText("");
+                    con_online.setText("");
                     JOptionPane.showMessageDialog(null, "User not found!");
                 }
             } else {
@@ -540,19 +576,29 @@ public class Customer extends javax.swing.JPanel {
         String tp = ctp.getText();
         String id = csearch.getText();
         String adr = addr.getText();
-        String typ = type.getText();
+        String ship = type.getText();
         String c_per = con_name.getText();
         String c_tp = con_tp.getText();
+        String bnk = bank.getText();
+        String cty = city.getText();
+        String c_name = cname2.getText();
+        String c_email = con_email.getText();
+        String c_online = con_online.getText();
         
         try {
             Statement s = db.myCon().createStatement();
-            s.executeUpdate(" UPDATE customer SET name='"+name+"', tp='"+tp+"', addr='"+adr+"', type='"+typ+"', c_per='"+c_per+"', c_tp='"+c_tp+"' WHERE cid='"+id+"'");
+            s.executeUpdate(" UPDATE customer SET name='"+name+"', tp='"+tp+"', addr='"+adr+"', shipping_addr='"+ship+"', bank='"+bnk+"', city='"+cty+"', c_name='"+c_name+"', c_per='"+c_per+"', c_tp='"+c_tp+"', c_email='"+c_email+"', c_online='"+c_online+"' WHERE cid='"+id+"'");
             cname.setText("");
             ctp.setText("");
             addr.setText("");
             type.setText("");
             con_name.setText("");
             con_tp.setText("");
+            bank.setText("");
+            city.setText("");
+            cname2.setText("");
+            con_email.setText("");
+            con_online.setText("");
             JOptionPane.showMessageDialog(null, "User Updated Successfully!");
             tableLoad();
             
@@ -574,6 +620,11 @@ public class Customer extends javax.swing.JPanel {
             type.setText("");
             con_name.setText("");
             con_tp.setText("");
+            bank.setText("");
+            city.setText("");
+            cname2.setText("");
+            con_email.setText("");
+            con_online.setText("");
             JOptionPane.showMessageDialog(null, "User Deleted Successfully!");
             tableLoad();
             
@@ -589,18 +640,28 @@ public class Customer extends javax.swing.JPanel {
         String name = jTable1.getValueAt(row, 1).toString();
         String tp = jTable1.getValueAt(row, 2).toString();
         String adr = jTable1.getValueAt(row, 3).toString();
-        String typ = jTable1.getValueAt(row, 4).toString();
-        String c_per = jTable1.getValueAt(row, 5).toString();
-        String c_tp = jTable1.getValueAt(row, 6).toString();
+        String ship = jTable1.getValueAt(row, 4).toString();
+        String c_per = jTable1.getValueAt(row, 8).toString();
+        String c_tp = jTable1.getValueAt(row, 9).toString();
+        String bnk = jTable1.getValueAt(row, 5).toString();
+        String cty = jTable1.getValueAt(row, 6).toString();
+        String c_name = jTable1.getValueAt(row, 7).toString();
+        String c_email = jTable1.getValueAt(row, 10).toString();
+        String c_online = jTable1.getValueAt(row, 11).toString();
         
         
         csearch.setText(id);
         cname.setText(name);
         ctp.setText(tp);
         addr.setText(adr);
-        type.setText(typ);
+        type.setText(ship);
         con_name.setText(c_per);
         con_tp.setText(c_tp);
+        bank.setText(bnk);
+        city.setText(cty);
+        cname2.setText(c_name);
+        con_email.setText(c_email);
+        con_online.setText(c_online);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void csearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblKeyReleased
@@ -623,6 +684,11 @@ public class Customer extends javax.swing.JPanel {
                 v.add(rs.getString(5));
                 v.add(rs.getString(6));
                 v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
                 
                 dt.addRow(v);
             }
@@ -631,10 +697,21 @@ public class Customer extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_csearchtblKeyReleased
 
+    private void addr_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addr_checkActionPerformed
+        // TODO add your handling code here:
+        if (addr_check.isSelected()) {
+            type.setText(addr.getText());
+        } else {
+            type.setText("");
+        }
+    }//GEN-LAST:event_addr_checkActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addr;
-    private javax.swing.JTextField addr1;
+    private javax.swing.JCheckBox addr_check;
+    private javax.swing.JTextField bank;
+    private javax.swing.JTextField city;
     private javax.swing.JTextField cname;
     private javax.swing.JTextField cname2;
     private javax.swing.JTextField con_email;
@@ -672,6 +749,5 @@ public class Customer extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField type;
-    private javax.swing.JTextField type1;
     // End of variables declaration//GEN-END:variables
 }
