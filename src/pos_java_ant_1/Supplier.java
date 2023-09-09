@@ -953,16 +953,16 @@ public class Supplier extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         HashMap map = new HashMap();
-        map.put("para_cid", report_cid.getText());
+        map.put("para_sid", report_cid.getText());
         
-        ReportView rw = new ReportView("src\\reports\\customer.jasper",map);
+        ReportView rw = new ReportView("src\\reports\\supplier.jasper",map);
         rw.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         try {
-           ReportView rw = new ReportView("src\\reports\\allCustomers.jasper");
+           ReportView rw = new ReportView("src\\reports\\allSuppliers.jasper");
            rw.setVisible(true);
         } catch (Exception e) {
             System.out.println(e);
