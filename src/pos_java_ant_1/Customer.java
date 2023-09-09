@@ -7,6 +7,7 @@ package pos_java_ant_1;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -115,7 +116,7 @@ public class Customer extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        report_cid = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -528,8 +529,13 @@ public class Customer extends javax.swing.JPanel {
         jTabbedPane1.addTab("Search Customer", jPanel4);
 
         jButton5.setText("All Customers");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        report_cid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jButton6.setText("View Report");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -539,7 +545,7 @@ public class Customer extends javax.swing.JPanel {
         });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel18.setText("Customer Name :");
+        jLabel18.setText("Customer ID :");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -549,7 +555,7 @@ public class Customer extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
+                    .addComponent(report_cid)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
                 .addContainerGap(906, Short.MAX_VALUE))
@@ -562,7 +568,7 @@ public class Customer extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(report_cid, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
                 .addContainerGap(128, Short.MAX_VALUE))
@@ -945,7 +951,22 @@ public class Customer extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        HashMap map = new HashMap();
+        map.put("para_cid", report_cid.getText());
+        
+        ReportView rw = new ReportView("src\\reports\\customer.jasper",map);
+        rw.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        try {
+           ReportView rw = new ReportView("src\\reports\\allCustomers.jasper");
+           rw.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1001,7 +1022,7 @@ public class Customer extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField report_cid;
     private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables
 }
