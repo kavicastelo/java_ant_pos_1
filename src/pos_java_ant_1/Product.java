@@ -5,6 +5,7 @@
 package pos_java_ant_1;
 
 import java.awt.HeadlessException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,6 +49,13 @@ public class Product extends javax.swing.JPanel {
                 v.add(rs.getString(6));
                 v.add(rs.getString(7));
                 v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+                v.add(rs.getString(13));
+                v.add(rs.getString(14));
+                v.add(rs.getString(15));
                 
                 dt.addRow(v);
             }
@@ -677,7 +685,7 @@ public class Product extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Barcode", "Buy Price", "Sell Price", "Qty", "Supplier ID", "Supplier"
+                "ID", "Name", "Barcode", "Buy Price", "Sell Price", "Qty", "Default Unit", "Default Type", "MFD", "EXP", "Supplier ID", "Supplier", "Category", "Brand", "Description"
             }
         ));
         jTable1.setRowHeight(24);
@@ -761,8 +769,15 @@ public class Product extends javax.swing.JPanel {
         String price = jTable1.getValueAt(row, 3).toString();
         String sell = jTable1.getValueAt(row, 4).toString();
         String qty = jTable1.getValueAt(row, 5).toString();
-        String sup = jTable1.getValueAt(row, 6).toString();
-        String s_name = jTable1.getValueAt(row, 7).toString();
+        String sup = jTable1.getValueAt(row, 10).toString();
+        String s_name = jTable1.getValueAt(row, 11).toString();
+        String du = jTable1.getValueAt(row, 6).toString();
+        String dt = jTable1.getValueAt(row, 7).toString();
+        String mfd = jTable1.getValueAt(row, 8).toString();
+        String exp = jTable1.getValueAt(row, 9).toString();
+        String cat = jTable1.getValueAt(row, 12).toString();
+        String brand = jTable1.getValueAt(row, 13).toString();
+        String des = jTable1.getValueAt(row, 14).toString();
         
         psearch.setText(id);
         pname.setText(name);
@@ -772,6 +787,14 @@ public class Product extends javax.swing.JPanel {
         pqty.setText(qty);
         psup.setText(sup);
         sup_cmb.setSelectedItem(s_name);
+        cat_cmb.setSelectedItem(cat);
+        dunit.setText(du);
+        dtype.setText(dt);
+//        mf.setDateFormatString(mfd);
+//        ex.setDateFormatString(exp);
+        addcat.setText(cat);;
+        brd.setText(brand);
+        desc.setText(des);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void psearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psearchtblKeyReleased
@@ -891,8 +914,16 @@ public class Product extends javax.swing.JPanel {
             sell_price.setText("");
             pqty.setText("");
             psup.setText("");
-            sup_cmb.setSelectedItem("");
+            sup_cmb.setSelectedIndex(0);
             psearch.setText("");
+            cat_cmb.setSelectedIndex(0);
+            dunit.setText("");
+            dtype.setText("");
+            mf.setDateFormatString("");
+            ex.setDateFormatString("");
+            addcat.setText("");;
+            brd.setText("");
+            desc.setText("");
             JOptionPane.showMessageDialog(null, "Product Deleted Successfully!");
             tableLoad();
 
@@ -911,18 +942,33 @@ public class Product extends javax.swing.JPanel {
         String sup = psup.getText();
         String id = psearch.getText();
         String s_name = sup_cmb.getSelectedItem().toString();
+        String du = dunit.getText();
+        String dt = dtype.getText();
+        String mfd = mf.getDate().toString();
+        String exp = ex.getDate().toString();
+        String cat = addcat.getText();
+        String brand = brd.getText();
+        String des = desc.getText();
 
         try {
             Statement s = db.myCon().createStatement();
-            s.executeUpdate(" UPDATE product SET name='"+name+"', bar='"+bar+"', qty='"+qty+"', price='"+price+"', sell_p='"+sell+"', sup='"+sup+"', sup_name='"+s_name+"' WHERE pid='"+id+"'");
+            s.executeUpdate(" UPDATE product SET name='"+name+"', bar='"+bar+"', qty='"+qty+"', d_unit='"+du+"', d_type='"+dt+"', mfd='"+mfd+"', exp='"+exp+"', price='"+price+"', sell_p='"+sell+"', sup='"+sup+"', sup_name='"+s_name+"', cat='"+cat+"', brand='"+brand+"', des='"+des+"' WHERE pid='"+id+"'");
             pname.setText("");
             pbar.setText("");
             pprice.setText("");
             sell_price.setText("");
             pqty.setText("");
             psup.setText("");
-            sup_cmb.setSelectedItem("");
+            sup_cmb.setSelectedIndex(0);
             psearch.setText("");
+            cat_cmb.setSelectedIndex(0);
+            dunit.setText("");
+            dtype.setText("");
+//            mf.setDateFormatString("");
+//            ex.setDateFormatString("");
+            addcat.setText("");;
+            brd.setText("");
+            desc.setText("");
             JOptionPane.showMessageDialog(null, "Product Updated Successfully!");
             tableLoad();
 
@@ -948,6 +994,14 @@ public class Product extends javax.swing.JPanel {
                     pqty.setText(rs.getString("qty"));
                     psup.setText(rs.getString("sup"));
                     sup_cmb.setSelectedItem(rs.getString("sup_name"));
+                    cat_cmb.setSelectedItem(rs.getString("cat"));
+                    dunit.setText(rs.getString("d_unit"));
+                    dtype.setText(rs.getString("d_type"));
+//                    mf.setDate(Date.valueOf(rs.getString("mfd")));
+//                    ex.setDate(Date.valueOf(rs.getString("exp")));
+                    addcat.setText(rs.getString("cat"));;
+                    brd.setText(rs.getString("brand"));
+                    desc.setText(rs.getString("des"));
                 }
                 else{
                     pname.setText("");
@@ -956,7 +1010,16 @@ public class Product extends javax.swing.JPanel {
                     sell_price.setText("");
                     pqty.setText("");
                     psup.setText("");
-                    sup_cmb.setSelectedItem("");
+                    sup_cmb.setSelectedIndex(0);
+                    psearch.setText("");
+                    cat_cmb.setSelectedIndex(0);
+                    dunit.setText("");
+                    dtype.setText("");
+                    mf.setDateFormatString("");
+                    ex.setDateFormatString("");
+                    addcat.setText("");;
+                    brd.setText("");
+                    desc.setText("");
                     JOptionPane.showMessageDialog(null, "Product not found!");
                 }
             } else {
@@ -998,8 +1061,8 @@ public class Product extends javax.swing.JPanel {
             cat_cmb.setSelectedIndex(0);
             dunit.setText("");
             dtype.setText("");
-            mf.setDateFormatString("");
-            ex.setDateFormatString("");
+//            mf.setDateFormatString("");
+//            ex.setDateFormatString("");
             addcat.setText("");;
             brd.setText("");
             desc.setText("");
