@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Product extends javax.swing.JPanel {
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
     /**
      * Creates new form Customer
      */
@@ -191,6 +193,10 @@ public class Product extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         psearchtbl = new javax.swing.JTextField();
+        psearchtbl1 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        psearchtbl2 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -648,18 +654,17 @@ public class Product extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton9)
-                        .addComponent(jButton10)
-                        .addComponent(jButton11))
+                    .addComponent(jButton9)
+                    .addComponent(jButton10)
+                    .addComponent(jButton11)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cat_id, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12)
                     .addComponent(jLabel12))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -677,7 +682,7 @@ public class Product extends javax.swing.JPanel {
         jTabbedPane1.addTab("Add Category", jPanel5);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel8.setText("Search :");
+        jLabel8.setText("Product :");
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -704,6 +709,28 @@ public class Product extends javax.swing.JPanel {
             }
         });
 
+        psearchtbl1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        psearchtbl1.setText("0");
+        psearchtbl1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                psearchtbl1KeyReleased(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel19.setText("Barcode :");
+
+        psearchtbl2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        psearchtbl2.setText("0");
+        psearchtbl2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                psearchtbl2KeyReleased(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel20.setText("Category :");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -711,12 +738,20 @@ public class Product extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(psearchtbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(psearchtbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 116, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -725,9 +760,15 @@ public class Product extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(psearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel19)
+                        .addComponent(psearchtbl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(psearchtbl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -790,8 +831,12 @@ public class Product extends javax.swing.JPanel {
         cat_cmb.setSelectedItem(cat);
         dunit.setText(du);
         dtype.setText(dt);
-//        mf.setDateFormatString(mfd);
-//        ex.setDateFormatString(exp);
+        try {
+                mf.setDate(sdf.parse(mfd));
+                ex.setDate(sdf.parse(exp));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         addcat.setText(cat);;
         brd.setText(brand);
         desc.setText(des);
@@ -818,6 +863,13 @@ public class Product extends javax.swing.JPanel {
                 v.add(rs.getString(6));
                 v.add(rs.getString(7));
                 v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+                v.add(rs.getString(13));
+                v.add(rs.getString(14));
+                v.add(rs.getString(15));
                 
                 dt.addRow(v);
             }
@@ -944,8 +996,8 @@ public class Product extends javax.swing.JPanel {
         String s_name = sup_cmb.getSelectedItem().toString();
         String du = dunit.getText();
         String dt = dtype.getText();
-        String mfd = mf.getDate().toString();
-        String exp = ex.getDate().toString();
+        String mfd = sdf.format(mf.getDate());
+        String exp = sdf.format(ex.getDate());
         String cat = addcat.getText();
         String brand = brd.getText();
         String des = desc.getText();
@@ -997,8 +1049,12 @@ public class Product extends javax.swing.JPanel {
                     cat_cmb.setSelectedItem(rs.getString("cat"));
                     dunit.setText(rs.getString("d_unit"));
                     dtype.setText(rs.getString("d_type"));
-//                    mf.setDate(Date.valueOf(rs.getString("mfd")));
-//                    ex.setDate(Date.valueOf(rs.getString("exp")));
+                    try {
+                        mf.setDate(sdf.parse(rs.getString("mfd")));
+                        ex.setDate(sdf.parse(rs.getString("exp")));
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                     addcat.setText(rs.getString("cat"));;
                     brd.setText(rs.getString("brand"));
                     desc.setText(rs.getString("des"));
@@ -1015,8 +1071,8 @@ public class Product extends javax.swing.JPanel {
                     cat_cmb.setSelectedIndex(0);
                     dunit.setText("");
                     dtype.setText("");
-                    mf.setDateFormatString("");
-                    ex.setDateFormatString("");
+//                    mf.setDateFormatString("");
+//                    ex.setDateFormatString("");
                     addcat.setText("");;
                     brd.setText("");
                     desc.setText("");
@@ -1042,8 +1098,8 @@ public class Product extends javax.swing.JPanel {
         String s_name = sup_cmb.getSelectedItem().toString();
         String du = dunit.getText();
         String dt = dtype.getText();
-        String mfd = mf.getDate().toString();
-        String exp = ex.getDate().toString();
+        String mfd = sdf.format(mf.getDate().toString());
+        String exp = sdf.format(ex.getDate().toString());
         String cat = addcat.getText();
         String brand = brd.getText();
         String des = desc.getText();
@@ -1102,6 +1158,78 @@ public class Product extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cat_idKeyReleased
 
+    private void psearchtbl1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psearchtbl1KeyReleased
+        // TODO add your handling code here:
+        String name = psearchtbl1.getText();
+            
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM product WHERE bar LIKE '%"+name+"%'");
+            
+            while (rs.next()) {                
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+                v.add(rs.getString(13));
+                v.add(rs.getString(14));
+                v.add(rs.getString(15));
+                
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_psearchtbl1KeyReleased
+
+    private void psearchtbl2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psearchtbl2KeyReleased
+        // TODO add your handling code here:
+        String name = psearchtbl2.getText();
+            
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+            
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM product WHERE cat LIKE '%"+name+"%'");
+            
+            while (rs.next()) {                
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+                v.add(rs.getString(13));
+                v.add(rs.getString(14));
+                v.add(rs.getString(15));
+                
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_psearchtbl2KeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addcat;
@@ -1131,7 +1259,9 @@ public class Product extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1159,6 +1289,8 @@ public class Product extends javax.swing.JPanel {
     private javax.swing.JTextField pqty;
     private javax.swing.JTextField psearch;
     private javax.swing.JTextField psearchtbl;
+    private javax.swing.JTextField psearchtbl1;
+    private javax.swing.JTextField psearchtbl2;
     private javax.swing.JTextField psup;
     private javax.swing.JTextField sell_price;
     private javax.swing.JComboBox<String> sup_cmb;
