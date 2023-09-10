@@ -8,6 +8,7 @@ import java.awt.HeadlessException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -116,12 +117,25 @@ public class sales extends javax.swing.JPanel {
     }
     
     public void pay(){
+        DecimalFormat df = new DecimalFormat("000.00");
+        
         double paid = Double.valueOf(payment.getText());
         double total = Double.valueOf(tot.getText());
+        
+        double ship = Double.valueOf(shipping.getText());
+        double tx = Double.valueOf(tax.getText());
+        double disc = Double.valueOf(dis.getText());
+        
+        double tax_amnt = total * tx /100;
+        double dis_amnt = total * disc /100;
+        double grand_tot = (total + ship + tax_amnt) - dis_amnt;
+        double bal = paid - grand_tot;
             
-        double bal = paid - total;
-            
-        balance0.setText(String.valueOf(bal));
+        balance.setText(df.format(bal));
+        shiplbl.setText(df.format(ship));
+        taxlbl.setText(df.format(tax_amnt));
+        dislbl.setText(df.format(dis_amnt));
+        grandtot.setText(df.format(grand_tot));
     }
     
     /**
@@ -167,30 +181,32 @@ public class sales extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         tot = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        balance0 = new javax.swing.JLabel();
-        balance1 = new javax.swing.JLabel();
+        shiplbl = new javax.swing.JLabel();
+        taxlbl = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        balance2 = new javax.swing.JLabel();
+        dislbl = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        balance3 = new javax.swing.JLabel();
+        grandtot = new javax.swing.JLabel();
         balance = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tot_qty = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        payment1 = new javax.swing.JTextField();
+        shipping = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        payment2 = new javax.swing.JTextField();
+        tax = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        payment3 = new javax.swing.JTextField();
+        dis = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         payment = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        pat_cmb = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ref = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
@@ -461,13 +477,13 @@ public class sales extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel11.setText("Shipping Cost :");
 
-        balance0.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        balance0.setText("00.00");
-        balance0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        shiplbl.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        shiplbl.setText("00.00");
+        shiplbl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        balance1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        balance1.setText("00.00");
-        balance1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        taxlbl.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        taxlbl.setText("00.00");
+        taxlbl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel20.setText("Tax Amount :");
@@ -475,23 +491,35 @@ public class sales extends javax.swing.JPanel {
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel21.setText("Discount Amount :");
 
-        balance2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        balance2.setText("00.00");
-        balance2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        dislbl.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        dislbl.setText("00.00");
+        dislbl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel22.setBackground(new java.awt.Color(0, 153, 51));
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Grand Total Amount :");
+        jLabel22.setOpaque(true);
 
-        balance3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        balance3.setText("00.00");
-        balance3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grandtot.setBackground(new java.awt.Color(0, 153, 51));
+        grandtot.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        grandtot.setForeground(new java.awt.Color(255, 255, 255));
+        grandtot.setText("00.00");
+        grandtot.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        grandtot.setOpaque(true);
 
+        balance.setBackground(new java.awt.Color(255, 51, 0));
         balance.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        balance.setForeground(new java.awt.Color(255, 255, 255));
         balance.setText("00.00");
         balance.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        balance.setOpaque(true);
 
+        jLabel23.setBackground(new java.awt.Color(255, 51, 0));
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Balance/Due :");
+        jLabel23.setOpaque(true);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -509,10 +537,10 @@ public class sales extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tot, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(balance0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(balance1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(balance2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(balance3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(shiplbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taxlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dislbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(grandtot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -526,23 +554,23 @@ public class sales extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(balance0))
+                    .addComponent(shiplbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(balance1))
+                    .addComponent(taxlbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(balance2))
+                    .addComponent(dislbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(balance3))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(grandtot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(balance))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -550,43 +578,50 @@ public class sales extends javax.swing.JPanel {
 
         tot_qty.setText("00");
 
-        payment1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        payment1.setText("0");
-        payment1.addKeyListener(new java.awt.event.KeyAdapter() {
+        shipping.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        shipping.setText("0");
+        shipping.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                payment1KeyReleased(evt);
+                shippingKeyReleased(evt);
             }
         });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Shipping Cost :");
 
-        payment2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        payment2.setText("0");
-        payment2.addKeyListener(new java.awt.event.KeyAdapter() {
+        tax.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tax.setText("2.5");
+        tax.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                payment2KeyReleased(evt);
+                taxKeyReleased(evt);
             }
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Tax :");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Discount :");
 
-        payment3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        payment3.setText("0");
-        payment3.addActionListener(new java.awt.event.ActionListener() {
+        dis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dis.setText("5");
+        dis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                payment3ActionPerformed(evt);
+                disActionPerformed(evt);
             }
         });
-        payment3.addKeyListener(new java.awt.event.KeyAdapter() {
+        dis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                payment3KeyReleased(evt);
+                disKeyReleased(evt);
             }
         });
+
+        jLabel13.setText("%");
+
+        jLabel25.setText("%");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -595,19 +630,26 @@ public class sales extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(payment3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(payment2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(payment1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(shipping, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 17, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tax, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dis, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,15 +657,17 @@ public class sales extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(payment1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shipping, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(payment2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(payment3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -638,13 +682,13 @@ public class sales extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CASH", "CREDIT", "CHECK", "ONLINE TRANSFER" }));
+        pat_cmb.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        pat_cmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CASH", "CREDIT", "CHECK", "ONLINE TRANSFER" }));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel19.setText("Method :");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        ref.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel24.setText("Ref No :");
@@ -660,11 +704,11 @@ public class sales extends javax.swing.JPanel {
                     .addComponent(payment))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)
+                    .addComponent(pat_cmb, 0, 0, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
+                    .addComponent(ref)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -678,9 +722,9 @@ public class sales extends javax.swing.JPanel {
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1)
+                    .addComponent(pat_cmb)
                     .addComponent(payment)
-                    .addComponent(jTextField1))
+                    .addComponent(ref))
                 .addGap(14, 14, 14))
         );
 
@@ -914,7 +958,7 @@ public class sales extends javax.swing.JPanel {
                 String name = customer_combo.getSelectedItem().toString();
                 String t_qty = tot_qty.getText();
                 String bill = tot.getText();
-                String bal = balance0.getText();
+                String bal = shiplbl.getText();
                 String status = null;
                 
                 Double total = Double.valueOf(tot.getText());
@@ -1029,43 +1073,57 @@ public class sales extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_barKeyReleased
 
-    private void payment1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_payment1KeyReleased
+    private void shippingKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_shippingKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_payment1KeyReleased
+        try {
+            pay();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Field can not be empty");
+        }
+    }//GEN-LAST:event_shippingKeyReleased
 
-    private void payment2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_payment2KeyReleased
+    private void taxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_taxKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_payment2KeyReleased
+        try {
+            pay();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Field can not be empty");
+        }
+    }//GEN-LAST:event_taxKeyReleased
 
-    private void payment3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_payment3KeyReleased
+    private void disKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_disKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_payment3KeyReleased
+        try {
+            pay();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Field can not be empty");
+        }
+    }//GEN-LAST:event_disKeyReleased
 
-    private void payment3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment3ActionPerformed
+    private void disActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_payment3ActionPerformed
+    }//GEN-LAST:event_disActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balance;
-    private javax.swing.JLabel balance0;
-    private javax.swing.JLabel balance1;
-    private javax.swing.JLabel balance2;
-    private javax.swing.JLabel balance3;
     private javax.swing.JTextField bar;
     private javax.swing.JLabel barlbl;
     private javax.swing.JLabel citi;
     private javax.swing.JComboBox<String> customer_combo;
+    private javax.swing.JTextField dis;
+    private javax.swing.JLabel dislbl;
+    private javax.swing.JLabel grandtot;
     private javax.swing.JLabel inid;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1078,6 +1136,7 @@ public class sales extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1096,13 +1155,15 @@ public class sales extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> pat_cmb;
     private javax.swing.JTextField payment;
-    private javax.swing.JTextField payment1;
-    private javax.swing.JTextField payment2;
-    private javax.swing.JTextField payment3;
     private javax.swing.JComboBox<String> product_combo;
     private javax.swing.JTextField qty;
+    private javax.swing.JTextField ref;
+    private javax.swing.JLabel shiplbl;
+    private javax.swing.JTextField shipping;
+    private javax.swing.JTextField tax;
+    private javax.swing.JLabel taxlbl;
     private javax.swing.JLabel tot;
     private javax.swing.JLabel tot_price;
     private javax.swing.JLabel tot_qty;
