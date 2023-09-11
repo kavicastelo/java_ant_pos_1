@@ -4,6 +4,7 @@
  */
 package pos_java_ant_1;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -55,6 +56,41 @@ public class Employee extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No data to load");
         }
         
+    }
+    
+    public void save(){
+        String name = cname.getText();
+        String tp = ctp.getText();
+        String adr = addr.getText();
+        String ship = type.getText();
+        String c_per = con_name.getText();
+        String c_tp = con_tp.getText();
+        String bnk = bank.getText();
+        String cty = city.getText();
+        String c_name = cname2.getText();
+        String c_email = con_email.getText();
+        String c_online = con_online.getText();
+        
+        try {
+            Statement s = db.myCon().createStatement();
+            s.executeUpdate(" INSERT INTO employee (name,tp,addr,shipping_addr,bank,city,c_name,c_per,c_tp,c_email,c_online) VALUES ('"+name+"','"+tp+"','"+adr+"','"+ship+"','"+bnk+"','"+cty+"','"+c_name+"','"+c_per+"','"+c_tp+"','"+c_email+"','"+c_online+"')");
+            cname.setText("");
+            ctp.setText("");
+            addr.setText("");
+            type.setText("");
+            con_name.setText("");
+            con_tp.setText("");
+            bank.setText("");
+            city.setText("");
+            cname2.setText("");
+            con_email.setText("");
+            con_online.setText("");
+            JOptionPane.showMessageDialog(null, "User Added Successfully!");
+            tableLoad();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -142,27 +178,57 @@ public class Employee extends javax.swing.JPanel {
 
         cname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cname.setText("0");
+        cname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cnameKeyReleased(evt);
+            }
+        });
 
         ctp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ctp.setText("0");
+        ctp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ctpKeyReleased(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("BillingAddress :");
 
         addr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addr.setText("0");
+        addr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                addrKeyReleased(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Shipping Address :");
 
         type.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         type.setText("0");
+        type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                typeKeyReleased(evt);
+            }
+        });
 
         bank.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bank.setText("0");
+        bank.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                bankKeyReleased(evt);
+            }
+        });
 
         city.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         city.setText("0");
+        city.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cityKeyReleased(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel10.setText("Bank Acc. No. :");
@@ -240,21 +306,41 @@ public class Employee extends javax.swing.JPanel {
 
         con_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         con_name.setText("0");
+        con_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                con_nameKeyReleased(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("Mobile :");
 
         con_tp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         con_tp.setText("0");
+        con_tp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                con_tpKeyReleased(evt);
+            }
+        });
 
         cname2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cname2.setText("0");
+        cname2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cname2KeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel12.setText("Person Role :");
 
         con_online.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         con_online.setText("0");
+        con_online.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                con_onlineKeyReleased(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel13.setText("Online :");
@@ -264,6 +350,11 @@ public class Employee extends javax.swing.JPanel {
 
         con_email.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         con_email.setText("0");
+        con_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                con_emailKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -636,38 +727,7 @@ public class Employee extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String name = cname.getText();
-        String tp = ctp.getText();
-        String adr = addr.getText();
-        String ship = type.getText();
-        String c_per = con_name.getText();
-        String c_tp = con_tp.getText();
-        String bnk = bank.getText();
-        String cty = city.getText();
-        String c_name = cname2.getText();
-        String c_email = con_email.getText();
-        String c_online = con_online.getText();
-        
-        try {
-            Statement s = db.myCon().createStatement();
-            s.executeUpdate(" INSERT INTO employee (name,tp,addr,shipping_addr,bank,city,c_name,c_per,c_tp,c_email,c_online) VALUES ('"+name+"','"+tp+"','"+adr+"','"+ship+"','"+bnk+"','"+cty+"','"+c_name+"','"+c_per+"','"+c_tp+"','"+c_email+"','"+c_online+"')");
-            cname.setText("");
-            ctp.setText("");
-            addr.setText("");
-            type.setText("");
-            con_name.setText("");
-            con_tp.setText("");
-            bank.setText("");
-            city.setText("");
-            cname2.setText("");
-            con_email.setText("");
-            con_online.setText("");
-            JOptionPane.showMessageDialog(null, "User Added Successfully!");
-            tableLoad();
-            
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        save();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -969,6 +1029,94 @@ public class Employee extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void cnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cnameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            ctp.selectAll();
+            ctp.requestFocus();
+        }
+    }//GEN-LAST:event_cnameKeyReleased
+
+    private void ctpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ctpKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            addr.selectAll();
+            addr.requestFocus();
+        }
+    }//GEN-LAST:event_ctpKeyReleased
+
+    private void addrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addrKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            type.selectAll();
+            type.requestFocus();
+        }
+    }//GEN-LAST:event_addrKeyReleased
+
+    private void typeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            bank.selectAll();
+            bank.requestFocus();
+        }
+    }//GEN-LAST:event_typeKeyReleased
+
+    private void bankKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bankKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            city.selectAll();
+            city.requestFocus();
+        }
+    }//GEN-LAST:event_bankKeyReleased
+
+    private void cityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            cname2.selectAll();
+            cname2.requestFocus();
+        }
+    }//GEN-LAST:event_cityKeyReleased
+
+    private void cname2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cname2KeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_name.selectAll();
+            con_name.requestFocus();
+        }
+    }//GEN-LAST:event_cname2KeyReleased
+
+    private void con_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_nameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_tp.selectAll();
+            con_tp.requestFocus();
+        }
+    }//GEN-LAST:event_con_nameKeyReleased
+
+    private void con_tpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_tpKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_email.selectAll();
+            con_email.requestFocus();
+        }
+    }//GEN-LAST:event_con_tpKeyReleased
+
+    private void con_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_emailKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_online.selectAll();
+            con_online.requestFocus();
+        }
+    }//GEN-LAST:event_con_emailKeyReleased
+
+    private void con_onlineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_onlineKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            save();
+        }
+    }//GEN-LAST:event_con_onlineKeyReleased
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addr;
