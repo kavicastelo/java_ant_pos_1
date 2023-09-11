@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="print" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32aaa424-8bf5-466b-bc83-086872bc35bb">
 	<property name="ireport.zoom" value="1.7715610000000017"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="39"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -26,9 +26,12 @@
      sales.`t_qty` AS sales_t_qty,
      sales.`bill` AS sales_bill,
      sales.`status` AS sales_status,
-     sales.`bal` AS sales_bal
+     sales.`bal` AS sales_bal,
+     sales.`method` AS sales_method
 FROM
-     `cart` cart INNER JOIN `sales` sales ON cart.`inid`= sales.`inid` WHERE cart.`inid`= $P{cart_id_para}]]>
+     `cart` cart INNER JOIN `sales` sales ON cart.`inid` = sales.`inid`
+WHERE
+     cart.`inid` = $P{cart_id_para}]]>
 	</queryString>
 	<field name="cart_cid" class="java.lang.Integer"/>
 	<field name="cart_inid" class="java.lang.Integer"/>
@@ -45,9 +48,10 @@ FROM
 	<field name="sales_bill" class="java.lang.String"/>
 	<field name="sales_status" class="java.lang.String"/>
 	<field name="sales_bal" class="java.lang.String"/>
+	<field name="sales_method" class="java.lang.String"/>
 	<group name="tot">
 		<groupFooter>
-			<band height="66">
+			<band height="94">
 				<staticText>
 					<reportElement style="Column header" x="301" y="17" width="131" height="15" uuid="65002a62-da6d-4603-8c06-b0aa827a6817"/>
 					<textElement textAlignment="Right"/>
@@ -74,6 +78,15 @@ FROM
 				<textField>
 					<reportElement x="434" y="43" width="109" height="15" uuid="0643eac2-abfa-4a4a-9bee-1fa765113aee"/>
 					<textFieldExpression><![CDATA[$F{sales_bal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="303" y="69" width="131" height="15" uuid="67396117-33c9-428f-b26b-7243301cb4d0"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Paid :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="434" y="69" width="109" height="15" uuid="bad14ff6-6bea-4c21-aded-69e5c874ea15"/>
+					<textFieldExpression><![CDATA[$F{sales_method}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
