@@ -40,7 +40,7 @@ public class ReportView extends JFrame
     
     public ReportView(String fileName, HashMap para)
     {
-        super("Flexiart Software Solutions  System (Report Viewer)");
+        super("Flexiart Software Solutions  POS System (Report Viewer)");
 
 //        db d = new db();
         Connection con = db.myCon();
