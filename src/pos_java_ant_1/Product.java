@@ -1465,7 +1465,7 @@ public class Product extends javax.swing.JPanel {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
         try {
-            ReportView rw = new ReportView("src\\reports\\allProducts.jasper");
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allProducts.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
             System.out.println(e);
@@ -1477,7 +1477,7 @@ public class Product extends javax.swing.JPanel {
         HashMap map = new HashMap();
         map.put("pid_para", report_cid.getText());
 
-        ReportView rw = new ReportView("src\\reports\\product.jasper",map);
+        ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\product.jasper",map);
         rw.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 

@@ -4,6 +4,7 @@
  */
 package pos_java_ant_1;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -53,10 +54,14 @@ import javax.swing.JOptionPane;
 //}
 
 public class db {
+    ClassLoader classLoader = getClass().getClassLoader();
+    File databaseFile = new File(classLoader.getResource("C:/Flexiart POS/database/ant_pos.h2.db").getFile());
+        
     public static Connection myCon() {
 //        String dbUrl = "jdbc:h2:./database/h2/bin/database/ant_pos;AUTO_SERVER=TRUEAUTO_SERVER_PORT=8084"; // Change the URL as needed
-
-        String dbUrl = "jdbc:h2:./database/h2/bin/database/ant_pos";
+        
+//        String dbUrl = "jdbc:h2:./database/h2/bin/database/ant_pos";
+        String dbUrl = "jdbc:h2:C:/Flexiart POS/database/ant_pos.h2.db";
         String dbUser = "sa";
         String dbPassword = "";
         

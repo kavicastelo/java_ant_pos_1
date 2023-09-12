@@ -1034,14 +1034,14 @@ public class Employee extends javax.swing.JPanel {
         HashMap map = new HashMap();
         map.put("para_eid", report_cid.getText());
         
-        ReportView rw = new ReportView("src\\reports\\employee.jasper",map);
+        ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\employee.jasper",map);
         rw.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         try {
-           ReportView rw = new ReportView("src\\reports\\allEmployees.jasper");
+           ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allEmployees.jasper");
            rw.setVisible(true);
         } catch (Exception e) {
             System.out.println(e);

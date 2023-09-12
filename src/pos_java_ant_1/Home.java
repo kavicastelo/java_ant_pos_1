@@ -627,6 +627,27 @@ public class Home extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        String targetDirectory = "C:/Flexiart POS";
+        
+        FileManager fileManager = new FileManager();
+        
+        fileManager.createDirectories(targetDirectory, "database", "reports");
+        fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
+        fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
+        fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
+        fileManager.copyFile("./reports/allGRNs.jasper", targetDirectory + "/reports/allGRNs.jasper");
+        fileManager.copyFile("./reports/allProducts.jasper", targetDirectory + "/reports/allProducts.jasper");
+        fileManager.copyFile("./reports/allSuppliers.jasper", targetDirectory + "/reports/allSuppliers.jasper");
+        fileManager.copyFile("./reports/customer.jasper", targetDirectory + "/reports/customer.jasper");
+        fileManager.copyFile("./reports/employee.jasper", targetDirectory + "/reports/employee.jasper");
+        fileManager.copyFile("./reports/grn.jasper", targetDirectory + "/reports/grn.jasper");
+        fileManager.copyFile("./reports/invoice_report.jasper", targetDirectory + "/reports/invoice_report.jasper");
+        fileManager.copyFile("./reports/print.jasper", targetDirectory + "/reports/print.jasper");
+        fileManager.copyFile("./reports/product.jasper", targetDirectory + "/reports/product.jasper");
+        fileManager.copyFile("./reports/reportsearch.jasper", targetDirectory + "/reports/reportsearch.jasper");
+        fileManager.copyFile("./reports/supplier.jasper", targetDirectory + "/reports/supplier.jasper");
+        fileManager.copyFile("./reports/mini_logo.png", targetDirectory + "/reports/mini_logo.png");
+        fileManager.copyFile("./reports/logo.png", targetDirectory + "/reports/logo.png");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

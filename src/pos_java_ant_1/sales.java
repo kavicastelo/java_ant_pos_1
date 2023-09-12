@@ -1121,7 +1121,7 @@ public class sales extends javax.swing.JPanel {
             HashMap map = new HashMap();
             map.put("cart_id_para", id_val);
         
-            ReportView rw = new ReportView("src\\reports\\print.jasper",map);
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\print.jasper",map);
             rw.setVisible(true);
         } catch (Exception e) {
         }
