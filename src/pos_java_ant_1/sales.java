@@ -1045,7 +1045,7 @@ public class sales extends javax.swing.JPanel {
 "  `inid` INT NOT NULL,\n" +
 "  `cid` INT NOT NULL,\n" +
 "  `c_name` VARCHAR(20) NOT NULL,\n" +
-"  `t_qty` INT NOT NULL,\n" +
+"  `t_qty` VARCHAR(15) NOT NULL,\n" +
 "  `bill` DECIMAL(10, 2) NOT NULL,\n" +
 "  `status` VARCHAR(10) NOT NULL,\n" +
 "  `bal` DECIMAL(10, 2) NOT NULL,\n" +

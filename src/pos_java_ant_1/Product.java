@@ -178,8 +178,8 @@ public class Product extends javax.swing.JPanel {
 "  `qty` DECIMAL(10, 2) NOT NULL,\n" +
 "  `d_unit` VARCHAR(15) NOT NULL,\n" +
 "  `d_type` VARCHAR(15) NOT NULL,\n" +
-"  `mfd` DATE NOT NULL,\n" +
-"  `exp` DATE NOT NULL,\n" +
+"  `mfd` VARCHAR(15) NOT NULL,\n" +
+"  `exp` VARCHAR(15) NOT NULL,\n" +
 "  `sup` INT NOT NULL,\n" +
 "  `sup_name` VARCHAR(20) NOT NULL,\n" +
 "  `cat` VARCHAR(15) NOT NULL,\n" +

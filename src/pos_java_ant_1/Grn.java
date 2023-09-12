@@ -754,10 +754,10 @@ public class Grn extends javax.swing.JPanel {
 "  `sid` INT NOT NULL,\n" +
 "  `bar` VARCHAR(20) NOT NULL,\n" +
 "  `name` VARCHAR(20) NOT NULL,\n" +
-"  `qty` INT NOT NULL,\n" +
+"  `qty` VARCHAR(15) NOT NULL,\n" +
 "  `cost` DECIMAL(10, 2) NOT NULL,\n" +
 "  `sell` DECIMAL(10, 2) NOT NULL,\n" +
-"  `exp` DATE NOT NULL,\n" +
+"  `exp` VARCHAR(15) NOT NULL,\n" +
 "  `sub` DECIMAL(10, 2) NOT NULL,\n" +
 "  `dis` DECIMAL(10, 2) NOT NULL,\n" +
 "  `net` DECIMAL(10, 2) NOT NULL\n" +
