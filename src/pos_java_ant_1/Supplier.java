@@ -90,6 +90,26 @@ public class Supplier extends javax.swing.JPanel {
             
         } catch (SQLException e) {
             System.out.println(e);
+            try {
+                Statement st = db.myCon().createStatement();
+                st.executeUpdate("CREATE TABLE `supplier` (\n" +
+"  `sid` INT NOT NULL AUTO_INCREMENT,\n" +
+"  `name` VARCHAR(50) NOT NULL,\n" +
+"  `tp` VARCHAR(10) NOT NULL,\n" +
+"  `addr` VARCHAR(50) NOT NULL,\n" +
+"  `shipping_addr` VARCHAR(50) NOT NULL,\n" +
+"  `bank` VARCHAR(15) NOT NULL,\n" +
+"  `city` VARCHAR(15) NOT NULL,\n" +
+"  `c_name` VARCHAR(50) NOT NULL,\n" +
+"  `c_per` VARCHAR(20) NOT NULL,\n" +
+"  `c_tp` VARCHAR(10) NOT NULL,\n" +
+"  `c_email` VARCHAR(50) NOT NULL,\n" +
+"  `c_online` VARCHAR(50) NOT NULL\n" +
+")");
+                JOptionPane.showMessageDialog(null, "Please try again in first attemt when application launch");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
     }
 
@@ -159,21 +179,21 @@ public class Supplier extends javax.swing.JPanel {
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Search ID :");
 
         csearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         csearch.setText("0");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Suppliers Information :");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Org. Name :");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Org. Phone :");
 
         cname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -192,7 +212,7 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("BillingAddress :");
 
         addr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -203,7 +223,7 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Shipping Address :");
 
         type.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -230,10 +250,10 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Bank Acc. No. :");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setText("City :");
 
         addr_check.setText("use billing address");
@@ -266,7 +286,7 @@ public class Supplier extends javax.swing.JPanel {
                     .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addr_check)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +321,7 @@ public class Supplier extends javax.swing.JPanel {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contact Person", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Person Name :");
 
         con_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -312,7 +332,7 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Mobile :");
 
         con_tp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -331,7 +351,7 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setText("Person Role :");
 
         con_online.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -342,10 +362,10 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setText("Online :");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("Email :");
 
         con_email.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -375,7 +395,7 @@ public class Supplier extends javax.swing.JPanel {
                     .addComponent(cname2, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                     .addComponent(con_online)
                     .addComponent(con_email))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,14 +476,14 @@ public class Supplier extends javax.swing.JPanel {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -471,22 +491,22 @@ public class Supplier extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(csearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 714, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,17 +521,17 @@ public class Supplier extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Supplier", jPanel3);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Search (Organization) :");
 
-        csearchtbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearchtbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         csearchtbl.setText("0");
         csearchtbl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -538,7 +558,7 @@ public class Supplier extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        csearchtblcity.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearchtblcity.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         csearchtblcity.setText("0");
         csearchtblcity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -546,10 +566,10 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("(City) :");
 
-        csearchtbltp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearchtbltp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         csearchtbltp.setText("0");
         csearchtbltp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -557,13 +577,13 @@ public class Supplier extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("(Org. TP) :");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setText("(Per. Email) :");
 
-        csearchtblemail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearchtblemail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         csearchtblemail.setText("0");
         csearchtblemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -577,7 +597,8 @@ public class Supplier extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -593,9 +614,8 @@ public class Supplier extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(csearchtblemail, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addComponent(csearchtblemail)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,7 +634,7 @@ public class Supplier extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addComponent(csearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -650,7 +670,7 @@ public class Supplier extends javax.swing.JPanel {
                     .addComponent(report_cid)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                .addContainerGap(906, Short.MAX_VALUE))
+                .addContainerGap(794, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -693,7 +713,7 @@ public class Supplier extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reports", jPanel7);
@@ -702,28 +722,214 @@ public class Supplier extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        HashMap map = new HashMap();
+        map.put("para_sid", report_cid.getText());
+
+        ReportView rw = new ReportView("src\\reports\\supplier.jasper",map);
+        rw.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        try {
+            ReportView rw = new ReportView("src\\reports\\allSuppliers.jasper");
+            rw.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void csearchtblemailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblemailKeyReleased
+        // TODO add your handling code here:
+        String email = csearchtblemail.getText();
+
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE c_email LIKE '%"+email+"%'");
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_csearchtblemailKeyReleased
+
+    private void csearchtbltpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtbltpKeyReleased
+        // TODO add your handling code here:
+        String tp = csearchtbltp.getText();
+
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE tp LIKE '%"+tp+"%'");
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_csearchtbltpKeyReleased
+
+    private void csearchtblcityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblcityKeyReleased
+        // TODO add your handling code here:
+        String city = csearchtblcity.getText();
+
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE city LIKE '%"+city+"%'");
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_csearchtblcityKeyReleased
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        String id = jTable1.getValueAt(row, 0).toString();
+        String name = jTable1.getValueAt(row, 1).toString();
+        String tp = jTable1.getValueAt(row, 2).toString();
+        String adr = jTable1.getValueAt(row, 3).toString();
+        String ship = jTable1.getValueAt(row, 4).toString();
+        String c_per = jTable1.getValueAt(row, 8).toString();
+        String c_tp = jTable1.getValueAt(row, 9).toString();
+        String bnk = jTable1.getValueAt(row, 5).toString();
+        String cty = jTable1.getValueAt(row, 6).toString();
+        String c_name = jTable1.getValueAt(row, 7).toString();
+        String c_email = jTable1.getValueAt(row, 10).toString();
+        String c_online = jTable1.getValueAt(row, 11).toString();
+
+        csearch.setText(id);
+        cname.setText(name);
+        ctp.setText(tp);
+        addr.setText(adr);
+        type.setText(ship);
+        con_name.setText(c_per);
+        con_tp.setText(c_tp);
+        bank.setText(bnk);
+        city.setText(cty);
+        cname2.setText(c_name);
+        con_email.setText(c_email);
+        con_online.setText(c_online);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void csearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblKeyReleased
+        // TODO add your handling code here:
+        String name = csearchtbl.getText();
+
+        try {
+            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
+            dt.setRowCount(0);
+
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE name LIKE '%"+name+"%'");
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
+                v.add(rs.getString(10));
+                v.add(rs.getString(11));
+                v.add(rs.getString(12));
+
+                dt.addRow(v);
+            }
+        } catch (SQLException e) {
+            tableLoad();
+        }
+    }//GEN-LAST:event_csearchtblKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -733,11 +939,11 @@ public class Supplier extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String search = csearch.getText();
-        
+
         try {
             Statement s = db.myCon().createStatement();
             ResultSet rs = s.executeQuery(" SELECT * FROM supplier WHERE sid = '"+search+"'");
-            
+
             if (rs != null) {
                 if (rs.next()) {
                     cname.setText(rs.getString("name"));
@@ -769,7 +975,7 @@ public class Supplier extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Users not found!");
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -789,7 +995,7 @@ public class Supplier extends javax.swing.JPanel {
         String c_name = cname2.getText();
         String c_email = con_email.getText();
         String c_online = con_online.getText();
-        
+
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" UPDATE supplier SET name='"+name+"', tp='"+tp+"', addr='"+adr+"', shipping_addr='"+ship+"', bank='"+bnk+"', city='"+cty+"', c_name='"+c_name+"', c_per='"+c_per+"', c_tp='"+c_tp+"', c_email='"+c_email+"', c_online='"+c_online+"' WHERE sid='"+id+"'");
@@ -806,7 +1012,7 @@ public class Supplier extends javax.swing.JPanel {
             con_online.setText("");
             JOptionPane.showMessageDialog(null, "User Updated Successfully!");
             tableLoad();
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -815,7 +1021,7 @@ public class Supplier extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String id = csearch.getText();
-        
+
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" DELETE FROM supplier WHERE sid='"+id+"'");
@@ -832,274 +1038,11 @@ public class Supplier extends javax.swing.JPanel {
             con_online.setText("");
             JOptionPane.showMessageDialog(null, "User Deleted Successfully!");
             tableLoad();
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        int row = jTable1.getSelectedRow();
-        String id = jTable1.getValueAt(row, 0).toString();
-        String name = jTable1.getValueAt(row, 1).toString();
-        String tp = jTable1.getValueAt(row, 2).toString();
-        String adr = jTable1.getValueAt(row, 3).toString();
-        String ship = jTable1.getValueAt(row, 4).toString();
-        String c_per = jTable1.getValueAt(row, 8).toString();
-        String c_tp = jTable1.getValueAt(row, 9).toString();
-        String bnk = jTable1.getValueAt(row, 5).toString();
-        String cty = jTable1.getValueAt(row, 6).toString();
-        String c_name = jTable1.getValueAt(row, 7).toString();
-        String c_email = jTable1.getValueAt(row, 10).toString();
-        String c_online = jTable1.getValueAt(row, 11).toString();
-        
-        
-        csearch.setText(id);
-        cname.setText(name);
-        ctp.setText(tp);
-        addr.setText(adr);
-        type.setText(ship);
-        con_name.setText(c_per);
-        con_tp.setText(c_tp);
-        bank.setText(bnk);
-        city.setText(cty);
-        cname2.setText(c_name);
-        con_email.setText(c_email);
-        con_online.setText(c_online);
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void csearchtblKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblKeyReleased
-        // TODO add your handling code here:
-        String name = csearchtbl.getText();
-            
-        try {
-            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
-            dt.setRowCount(0);
-            
-            Statement s = db.myCon().createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE name LIKE '%"+name+"%'");
-            
-            while (rs.next()) {                
-                Vector v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
-                v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                v.add(rs.getString(6));
-                v.add(rs.getString(7));
-                v.add(rs.getString(8));
-                v.add(rs.getString(9));
-                v.add(rs.getString(10));
-                v.add(rs.getString(11));
-                v.add(rs.getString(12));
-                
-                dt.addRow(v);
-            }
-        } catch (SQLException e) {
-            tableLoad();
-        }
-    }//GEN-LAST:event_csearchtblKeyReleased
-
-    private void addr_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addr_checkActionPerformed
-        // TODO add your handling code here:
-        if (addr_check.isSelected()) {
-            type.setText(addr.getText());
-        } else {
-            type.setText("");
-        }
-    }//GEN-LAST:event_addr_checkActionPerformed
-
-    private void csearchtblcityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblcityKeyReleased
-        // TODO add your handling code here:
-        String city = csearchtblcity.getText();
-            
-        try {
-            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
-            dt.setRowCount(0);
-            
-            Statement s = db.myCon().createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE city LIKE '%"+city+"%'");
-            
-            while (rs.next()) {                
-                Vector v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
-                v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                v.add(rs.getString(6));
-                v.add(rs.getString(7));
-                v.add(rs.getString(8));
-                v.add(rs.getString(9));
-                v.add(rs.getString(10));
-                v.add(rs.getString(11));
-                v.add(rs.getString(12));
-                
-                dt.addRow(v);
-            }
-        } catch (SQLException e) {
-            tableLoad();
-        }
-    }//GEN-LAST:event_csearchtblcityKeyReleased
-
-    private void csearchtbltpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtbltpKeyReleased
-        // TODO add your handling code here:
-        String tp = csearchtbltp.getText();
-            
-        try {
-            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
-            dt.setRowCount(0);
-            
-            Statement s = db.myCon().createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE tp LIKE '%"+tp+"%'");
-            
-            while (rs.next()) {                
-                Vector v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
-                v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                v.add(rs.getString(6));
-                v.add(rs.getString(7));
-                v.add(rs.getString(8));
-                v.add(rs.getString(9));
-                v.add(rs.getString(10));
-                v.add(rs.getString(11));
-                v.add(rs.getString(12));
-                
-                dt.addRow(v);
-            }
-        } catch (SQLException e) {
-            tableLoad();
-        }
-    }//GEN-LAST:event_csearchtbltpKeyReleased
-
-    private void csearchtblemailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csearchtblemailKeyReleased
-        // TODO add your handling code here:
-        String email = csearchtblemail.getText();
-            
-        try {
-            DefaultTableModel dt = (DefaultTableModel)jTable1.getModel();
-            dt.setRowCount(0);
-            
-            Statement s = db.myCon().createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM supplier WHERE c_email LIKE '%"+email+"%'");
-            
-            while (rs.next()) {                
-                Vector v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
-                v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                v.add(rs.getString(6));
-                v.add(rs.getString(7));
-                v.add(rs.getString(8));
-                v.add(rs.getString(9));
-                v.add(rs.getString(10));
-                v.add(rs.getString(11));
-                v.add(rs.getString(12));
-                
-                dt.addRow(v);
-            }
-        } catch (SQLException e) {
-            tableLoad();
-        }
-    }//GEN-LAST:event_csearchtblemailKeyReleased
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        HashMap map = new HashMap();
-        map.put("para_sid", report_cid.getText());
-        
-        ReportView rw = new ReportView("src\\reports\\supplier.jasper",map);
-        rw.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        try {
-           ReportView rw = new ReportView("src\\reports\\allSuppliers.jasper");
-           rw.setVisible(true);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void cnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cnameKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            ctp.selectAll();
-            ctp.requestFocus();
-        }
-    }//GEN-LAST:event_cnameKeyReleased
-
-    private void ctpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ctpKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            addr.selectAll();
-            addr.requestFocus();
-        }
-    }//GEN-LAST:event_ctpKeyReleased
-
-    private void addrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addrKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            type.selectAll();
-            type.requestFocus();
-        }
-    }//GEN-LAST:event_addrKeyReleased
-
-    private void typeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            bank.selectAll();
-            bank.requestFocus();
-        }
-    }//GEN-LAST:event_typeKeyReleased
-
-    private void bankKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bankKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            city.selectAll();
-            city.requestFocus();
-        }
-    }//GEN-LAST:event_bankKeyReleased
-
-    private void cityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            cname2.selectAll();
-            cname2.requestFocus();
-        }
-    }//GEN-LAST:event_cityKeyReleased
-
-    private void cname2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cname2KeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            con_name.selectAll();
-            con_name.requestFocus();
-        }
-    }//GEN-LAST:event_cname2KeyReleased
-
-    private void con_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_nameKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            con_tp.selectAll();
-            con_tp.requestFocus();
-        }
-    }//GEN-LAST:event_con_nameKeyReleased
-
-    private void con_tpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_tpKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            con_email.selectAll();
-            con_email.requestFocus();
-        }
-    }//GEN-LAST:event_con_tpKeyReleased
 
     private void con_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_emailKeyReleased
         // TODO add your handling code here:
@@ -1115,6 +1058,87 @@ public class Supplier extends javax.swing.JPanel {
             save();
         }
     }//GEN-LAST:event_con_onlineKeyReleased
+
+    private void cname2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cname2KeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_name.selectAll();
+            con_name.requestFocus();
+        }
+    }//GEN-LAST:event_cname2KeyReleased
+
+    private void con_tpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_tpKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_email.selectAll();
+            con_email.requestFocus();
+        }
+    }//GEN-LAST:event_con_tpKeyReleased
+
+    private void con_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_con_nameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            con_tp.selectAll();
+            con_tp.requestFocus();
+        }
+    }//GEN-LAST:event_con_nameKeyReleased
+
+    private void addr_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addr_checkActionPerformed
+        // TODO add your handling code here:
+        if (addr_check.isSelected()) {
+            type.setText(addr.getText());
+        } else {
+            type.setText("");
+        }
+    }//GEN-LAST:event_addr_checkActionPerformed
+
+    private void cityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            cname2.selectAll();
+            cname2.requestFocus();
+        }
+    }//GEN-LAST:event_cityKeyReleased
+
+    private void bankKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bankKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            city.selectAll();
+            city.requestFocus();
+        }
+    }//GEN-LAST:event_bankKeyReleased
+
+    private void typeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            bank.selectAll();
+            bank.requestFocus();
+        }
+    }//GEN-LAST:event_typeKeyReleased
+
+    private void addrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addrKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            type.selectAll();
+            type.requestFocus();
+        }
+    }//GEN-LAST:event_addrKeyReleased
+
+    private void ctpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ctpKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            addr.selectAll();
+            addr.requestFocus();
+        }
+    }//GEN-LAST:event_ctpKeyReleased
+
+    private void cnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cnameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            ctp.selectAll();
+            ctp.requestFocus();
+        }
+    }//GEN-LAST:event_cnameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -746,6 +746,26 @@ public class Grn extends javax.swing.JPanel {
             data_load();
         } catch (HeadlessException | SQLException e) {
             System.out.println(e);
+            try {
+                Statement st = db.myCon().createStatement();
+                st.executeUpdate("CREATE TABLE `grn` (\n" +
+"  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+"  `grn` INT NOT NULL,\n" +
+"  `sid` INT NOT NULL,\n" +
+"  `bar` VARCHAR(20) NOT NULL,\n" +
+"  `name` VARCHAR(20) NOT NULL,\n" +
+"  `qty` INT NOT NULL,\n" +
+"  `cost` DECIMAL(10, 2) NOT NULL,\n" +
+"  `sell` DECIMAL(10, 2) NOT NULL,\n" +
+"  `exp` DATE NOT NULL,\n" +
+"  `sub` DECIMAL(10, 2) NOT NULL,\n" +
+"  `dis` DECIMAL(10, 2) NOT NULL,\n" +
+"  `net` DECIMAL(10, 2) NOT NULL\n" +
+")");
+                JOptionPane.showMessageDialog(null, "Please try again in first attemt when application launch");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

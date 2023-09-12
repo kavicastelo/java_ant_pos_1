@@ -90,6 +90,26 @@ public class Customer extends javax.swing.JPanel {
             
         } catch (SQLException e) {
             System.out.println(e);
+            try {
+                Statement st = db.myCon().createStatement();
+                st.executeUpdate("CREATE TABLE `customer` (\n" +
+"  `cid` INT NOT NULL AUTO_INCREMENT,\n" +
+"  `name` VARCHAR(50),\n" +
+"  `tp` VARCHAR(10) NOT NULL,\n" +
+"  `addr` VARCHAR(100) NOT NULL,\n" +
+"  `shipping_addr` VARCHAR(100) NOT NULL,\n" +
+"  `bank` VARCHAR(15) NOT NULL,\n" +
+"  `city` VARCHAR(15) NOT NULL,\n" +
+"  `c_name` VARCHAR(50) NOT NULL,\n" +
+"  `c_per` VARCHAR(20) NOT NULL,\n" +
+"  `c_tp` VARCHAR(10) NOT NULL,\n" +
+"  `c_email` VARCHAR(50) NOT NULL,\n" +
+"  `c_online` VARCHAR(50) NOT NULL\n" +
+")");
+                JOptionPane.showMessageDialog(null, "Please try again in first attemt when application launch");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
     }
 

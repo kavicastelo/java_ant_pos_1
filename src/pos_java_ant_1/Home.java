@@ -16,13 +16,6 @@ public class Home extends javax.swing.JFrame {
     
     public Home() {
         initComponents();
-        this.setFont(new Font("Arial", Font.PLAIN, 24));
-        try {
-            UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 24));
-            UIManager.put("Label.font", new Font("Arial", Font.PLAIN, 24));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         this.setExtendedState(Home.MAXIMIZED_BOTH);
         main_load();
     }
@@ -84,11 +77,12 @@ public class Home extends javax.swing.JFrame {
         jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         home_btn_grp.add(jToggleButton1);
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supplier.png"))); // NOI18N
         jToggleButton1.setText("Supplier");
         jToggleButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -99,7 +93,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton3);
-        jToggleButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emp.png"))); // NOI18N
         jToggleButton3.setText("Employee");
         jToggleButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -110,7 +104,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton4);
-        jToggleButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
         jToggleButton4.setText("Product");
         jToggleButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -121,7 +115,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton6);
-        jToggleButton6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reports.png"))); // NOI18N
         jToggleButton6.setText("Reports");
         jToggleButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -132,7 +126,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton7);
-        jToggleButton7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sales_menu.png"))); // NOI18N
         jToggleButton7.setText("Sales");
         jToggleButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -143,7 +137,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton8);
-        jToggleButton8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
         jToggleButton8.setText("Invoice");
         jToggleButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -154,7 +148,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton9);
-        jToggleButton9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/purchase.png"))); // NOI18N
         jToggleButton9.setText("GRN");
         jToggleButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -165,7 +159,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton10);
-        jToggleButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
         jToggleButton10.setText("Stock");
         jToggleButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -176,7 +170,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton2);
-        jToggleButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
         jToggleButton2.setText("Customers");
         jToggleButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -187,7 +181,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         home_btn_grp.add(jToggleButton12);
-        jToggleButton12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jToggleButton12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         jToggleButton12.setText("Return");
         jToggleButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -212,7 +206,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(jToggleButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -220,26 +214,26 @@ public class Home extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jToggleButton6)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -250,11 +244,11 @@ public class Home extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+            .addComponent(jLabel1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mini_logo.png"))); // NOI18N
@@ -263,11 +257,11 @@ public class Home extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout top_panelLayout = new javax.swing.GroupLayout(top_panel);
@@ -276,16 +270,16 @@ public class Home extends javax.swing.JFrame {
             top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, top_panelLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 529, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         top_panelLayout.setVerticalGroup(
             top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(top_panelLayout.createSequentialGroup()
-                .addGroup(top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -295,11 +289,11 @@ public class Home extends javax.swing.JFrame {
         panel_load.setLayout(panel_loadLayout);
         panel_loadLayout.setHorizontalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panel_loadLayout.setVerticalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -310,9 +304,7 @@ public class Home extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(panel_load, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel_load, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -466,9 +458,9 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(top_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bottom_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
