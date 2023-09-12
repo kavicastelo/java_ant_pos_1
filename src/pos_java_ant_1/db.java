@@ -61,7 +61,7 @@ public class db {
 //        String dbUrl = "jdbc:h2:./database/h2/bin/database/ant_pos;AUTO_SERVER=TRUEAUTO_SERVER_PORT=8084"; // Change the URL as needed
         
 //        String dbUrl = "jdbc:h2:./database/h2/bin/database/ant_pos";
-        String dbUrl = "jdbc:h2:C:/Flexiart POS/database/ant_pos.h2.db";
+        String dbUrl = "jdbc:h2:C:/Flexiart POS/database/ant_pos";
         String dbUser = "sa";
         String dbPassword = "";
         
@@ -83,7 +83,7 @@ public class db {
             return con;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Database not connected!");
+            JOptionPane.showMessageDialog(null, "Database not connected!\n"+e);
             return null;
         }
     }

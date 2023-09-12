@@ -5,6 +5,7 @@
 package pos_java_ant_1;
 
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
