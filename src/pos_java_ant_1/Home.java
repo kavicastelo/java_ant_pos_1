@@ -1,6 +1,9 @@
 package pos_java_ant_1;
 
 import java.awt.Font;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.UIManager;
 
 /**
@@ -84,7 +87,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton1);
         jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supplier.png"))); // NOI18N
-        jToggleButton1.setText("Supplier");
+        jToggleButton1.setText("SUPPLIER");
         jToggleButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +98,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton3);
         jToggleButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emp.png"))); // NOI18N
-        jToggleButton3.setText("Employee");
+        jToggleButton3.setText("EMPLOYEE");
         jToggleButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +109,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton4);
         jToggleButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
-        jToggleButton4.setText("Product");
+        jToggleButton4.setText("PRODUCT");
         jToggleButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +120,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton6);
         jToggleButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reports.png"))); // NOI18N
-        jToggleButton6.setText("Reports");
+        jToggleButton6.setText("REPORTS");
         jToggleButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +131,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton7);
         jToggleButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sales_menu.png"))); // NOI18N
-        jToggleButton7.setText("Sales");
+        jToggleButton7.setText("SALES");
         jToggleButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +142,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton8);
         jToggleButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
-        jToggleButton8.setText("Invoice");
+        jToggleButton8.setText("INVOICE");
         jToggleButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +153,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton9);
         jToggleButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/purchase.png"))); // NOI18N
-        jToggleButton9.setText("GRN");
+        jToggleButton9.setText("PURCHASE");
         jToggleButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +164,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton10);
         jToggleButton10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invo.png"))); // NOI18N
-        jToggleButton10.setText("Stock");
+        jToggleButton10.setText("STOCK");
         jToggleButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +175,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton2);
         jToggleButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
-        jToggleButton2.setText("Customers");
+        jToggleButton2.setText("CUSTOMER");
         jToggleButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +186,7 @@ public class Home extends javax.swing.JFrame {
         home_btn_grp.add(jToggleButton12);
         jToggleButton12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
-        jToggleButton12.setText("Return");
+        jToggleButton12.setText("RETURN");
         jToggleButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jToggleButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -628,26 +631,31 @@ public class Home extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         String targetDirectory = "C:/Flexiart POS";
+        Path path = Paths.get(targetDirectory);
         
         FileManager fileManager = new FileManager();
         
-        fileManager.createDirectories(targetDirectory, "database", "reports");
-        fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
-        fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
-        fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
-        fileManager.copyFile("./reports/allGRNs.jasper", targetDirectory + "/reports/allGRNs.jasper");
-        fileManager.copyFile("./reports/allProducts.jasper", targetDirectory + "/reports/allProducts.jasper");
-        fileManager.copyFile("./reports/allSuppliers.jasper", targetDirectory + "/reports/allSuppliers.jasper");
-        fileManager.copyFile("./reports/customer.jasper", targetDirectory + "/reports/customer.jasper");
-        fileManager.copyFile("./reports/employee.jasper", targetDirectory + "/reports/employee.jasper");
-        fileManager.copyFile("./reports/grn.jasper", targetDirectory + "/reports/grn.jasper");
-        fileManager.copyFile("./reports/invoice_report.jasper", targetDirectory + "/reports/invoice_report.jasper");
-        fileManager.copyFile("./reports/print.jasper", targetDirectory + "/reports/print.jasper");
-        fileManager.copyFile("./reports/product.jasper", targetDirectory + "/reports/product.jasper");
-        fileManager.copyFile("./reports/reportsearch.jasper", targetDirectory + "/reports/reportsearch.jasper");
-        fileManager.copyFile("./reports/supplier.jasper", targetDirectory + "/reports/supplier.jasper");
-        fileManager.copyFile("./reports/mini_logo.png", targetDirectory + "/reports/mini_logo.png");
-        fileManager.copyFile("./reports/logo.png", targetDirectory + "/reports/logo.png");
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            System.out.println("The directory exists.");
+        } else {
+            fileManager.createDirectories(targetDirectory, "database", "reports");
+            fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
+            fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
+            fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
+            fileManager.copyFile("./reports/allGRNs.jasper", targetDirectory + "/reports/allGRNs.jasper");
+            fileManager.copyFile("./reports/allProducts.jasper", targetDirectory + "/reports/allProducts.jasper");
+            fileManager.copyFile("./reports/allSuppliers.jasper", targetDirectory + "/reports/allSuppliers.jasper");
+            fileManager.copyFile("./reports/customer.jasper", targetDirectory + "/reports/customer.jasper");
+            fileManager.copyFile("./reports/employee.jasper", targetDirectory + "/reports/employee.jasper");
+            fileManager.copyFile("./reports/grn.jasper", targetDirectory + "/reports/grn.jasper");
+            fileManager.copyFile("./reports/invoice_report.jasper", targetDirectory + "/reports/invoice_report.jasper");
+            fileManager.copyFile("./reports/print.jasper", targetDirectory + "/reports/print.jasper");
+            fileManager.copyFile("./reports/product.jasper", targetDirectory + "/reports/product.jasper");
+            fileManager.copyFile("./reports/reportsearch.jasper", targetDirectory + "/reports/reportsearch.jasper");
+            fileManager.copyFile("./reports/supplier.jasper", targetDirectory + "/reports/supplier.jasper");
+            fileManager.copyFile("./reports/mini_logo.png", targetDirectory + "/reports/mini_logo.png");
+            fileManager.copyFile("./reports/logo.png", targetDirectory + "/reports/logo.png");
+        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

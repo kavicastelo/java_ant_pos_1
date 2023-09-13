@@ -492,7 +492,7 @@ public class Grn extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Add GRN", jPanel2);
+        jTabbedPane1.addTab("Add Purchase", jPanel2);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -505,7 +505,7 @@ public class Grn extends javax.swing.JPanel {
             .addGap(0, 68, Short.MAX_VALUE)
         );
 
-        jButton5.setText("All GRNs");
+        jButton5.setText("All Purchases");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -522,7 +522,7 @@ public class Grn extends javax.swing.JPanel {
         });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel18.setText("GRN ID :");
+        jLabel18.setText("PURCHASE ID :");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -570,7 +570,7 @@ public class Grn extends javax.swing.JPanel {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("View GRN", jPanel4);
+        jTabbedPane1.addTab("View Purchase", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
