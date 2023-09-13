@@ -1032,11 +1032,16 @@ public class Employee extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        HashMap map = new HashMap();
-        map.put("para_eid", report_cid.getText());
+        try {
+            HashMap map = new HashMap();
+            map.put("para_eid", report_cid.getText());
         
-        ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\employee.jasper",map);
-        rw.setVisible(true);
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\employee.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1045,7 +1050,7 @@ public class Employee extends javax.swing.JPanel {
            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allEmployees.jasper");
            rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 

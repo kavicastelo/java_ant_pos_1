@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -538,7 +539,7 @@ public class Home extends javax.swing.JFrame {
             ReportView rw = new ReportView("src\\reports\\allCustomers.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -548,7 +549,7 @@ public class Home extends javax.swing.JFrame {
             ReportView rw = new ReportView("src\\reports\\allProducts.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -558,7 +559,7 @@ public class Home extends javax.swing.JFrame {
             ReportView rw = new ReportView("src\\reports\\allSuppliers.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -568,7 +569,7 @@ public class Home extends javax.swing.JFrame {
             ReportView rw = new ReportView("src\\reports\\allGRNs.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -578,7 +579,7 @@ public class Home extends javax.swing.JFrame {
             ReportView rw = new ReportView("src\\reports\\allEmployees.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 

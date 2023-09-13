@@ -1119,6 +1119,7 @@ public class sales extends javax.swing.JPanel {
             ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\print.jasper",map);
             rw.setVisible(true);
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

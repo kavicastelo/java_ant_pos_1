@@ -5,6 +5,7 @@
 package pos_java_ant_1;
 
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -427,18 +428,23 @@ public class Reports extends javax.swing.JPanel {
            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\invoice_report.jasper");
            rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //parameter name from report = invo_para
-        HashMap map = new HashMap();
-        map.put("invo_para", para_inid.getText());
+        try {
+            HashMap map = new HashMap();
+            map.put("invo_para", para_inid.getText());
         
-        ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\reportsearch.jasper",map);
-        rw.setVisible(true);
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\reportsearch.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void para_inid1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_para_inid1KeyReleased
@@ -447,10 +453,25 @@ public class Reports extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        try {
+            HashMap map = new HashMap();
+            map.put("para_sid", para_inid.getText());
+        
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\supplier.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        try {
+           ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allSuppliers.jasper");
+           rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void para_inid2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_para_inid2KeyReleased
@@ -471,10 +492,25 @@ public class Reports extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        try {
+            HashMap map = new HashMap();
+            map.put("pid_para", para_inid.getText());
+        
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\product.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        try {
+           ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allProducts.jasper");
+           rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void para_inid4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_para_inid4KeyReleased
@@ -483,10 +519,25 @@ public class Reports extends javax.swing.JPanel {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        try {
+            HashMap map = new HashMap();
+            map.put("grn_para", para_inid.getText());
+        
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\grn.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        try {
+           ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allGRNs.jasper");
+           rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void para_inid5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_para_inid5KeyReleased
@@ -495,10 +546,25 @@ public class Reports extends javax.swing.JPanel {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
+        try {
+            HashMap map = new HashMap();
+            map.put("para_cid", para_inid.getText());
+        
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\customer.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        try {
+           ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allCustomers.jasper");
+           rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
 

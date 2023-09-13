@@ -759,17 +759,22 @@ public class Grn extends javax.swing.JPanel {
             ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\allGRNs.jasper");
             rw.setVisible(true);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        HashMap map = new HashMap();
-        map.put("grn_para", report_cid.getText());
+        try {
+            HashMap map = new HashMap();
+            map.put("grn_para", report_cid.getText());
 
-        ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\grn.jasper",map);
-        rw.setVisible(true);
+            ReportView rw = new ReportView("C:\\Flexiart POS\\reports\\grn.jasper",map);
+            rw.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
