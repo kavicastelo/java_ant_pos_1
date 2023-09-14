@@ -10,7 +10,9 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -141,7 +143,23 @@ public class sales extends javax.swing.JPanel {
     }
     
     public void add_to_cart(){
-        double qt = Double.valueOf(qty.getText());
+        
+        List<String> formFields = new ArrayList<>();
+        formFields.add(citi.getText());
+        formFields.add(bar.getText());
+        formFields.add(qty.getText());
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty()) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
+            double qt = Double.valueOf(qty.getText());
         double stk = Double.valueOf(stock);
         if (stk >= qt) {
             try {
@@ -171,6 +189,9 @@ public class sales extends javax.swing.JPanel {
         }
         total();
         pay();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill in the all fields correctly!");
+        }
     }
     
     /**
@@ -348,7 +369,6 @@ public class sales extends javax.swing.JPanel {
         jLabel12.setText("Barcode :");
 
         bar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        bar.setText("0");
         bar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 barKeyReleased(evt);
@@ -360,7 +380,6 @@ public class sales extends javax.swing.JPanel {
         jLabel10.setText("City :");
 
         citi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        citi.setText("0");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/money.png"))); // NOI18N
@@ -991,7 +1010,9 @@ public class sales extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        try {
+        int row = jTable1.getRowCount();
+        if (row != 0) {
+            try {
             //`cid`, `inid`, `prod_name`, `bar`, `qty`, `unit_price`, `total_price`
             DefaultTableModel tm = (DefaultTableModel)jTable1.getModel();
             int row_count = jTable1.getRowCount();
@@ -1121,6 +1142,10 @@ public class sales extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "No Items to found in table!");
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void customer_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customer_comboActionPerformed
