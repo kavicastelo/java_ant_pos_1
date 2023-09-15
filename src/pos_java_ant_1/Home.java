@@ -4,7 +4,12 @@ import java.awt.Font;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.swing.UIManager;
 
 /**
@@ -13,6 +18,10 @@ import javax.swing.UIManager;
  */
 public class Home extends javax.swing.JFrame {
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdfT = new SimpleDateFormat("HH:mm:ss");
+    Date d = new Date();
+    
     /**
      * Creates new form Home
      */
@@ -21,7 +30,26 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setExtendedState(Home.MAXIMIZED_BOTH);
+        date.setText(sdf.format(d));
         main_load();
+        new TimeUpdater().execute();
+    }
+    
+    private class TimeUpdater extends SwingWorker<Void, String> {
+        @Override
+        protected Void doInBackground() throws Exception {
+            while (true) {
+                String currentTime = sdfT.format(Calendar.getInstance().getTime());
+                publish(currentTime);
+                Thread.sleep(1000);
+            }
+        }
+
+        @Override
+        protected void process(List<String> chunks) {
+            // Update the time label on the EDT
+            time.setText(chunks.get(0));
+        }
     }
     
     public void main_load(){
@@ -56,6 +84,8 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        time = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         panel_load = new javax.swing.JPanel();
         bottom_panel = new javax.swing.JPanel();
@@ -268,13 +298,23 @@ public class Home extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        time.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clock.png"))); // NOI18N
+        time.setText("00.00.00");
+
+        date.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calender.png"))); // NOI18N
+        date.setText("2023-09-15");
+
         javax.swing.GroupLayout top_panelLayout = new javax.swing.GroupLayout(top_panel);
         top_panel.setLayout(top_panelLayout);
         top_panelLayout.setHorizontalGroup(
             top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, top_panelLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 529, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -285,6 +325,12 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(top_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(time)
+                    .addComponent(date))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_load.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -631,32 +677,7 @@ public class Home extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        String targetDirectory = "C:/Flexiart POS";
-        Path path = Paths.get(targetDirectory);
         
-        FileManager fileManager = new FileManager();
-        
-        if (Files.exists(path) && Files.isDirectory(path)) {
-            System.out.println("The directory exists.");
-        } else {
-            fileManager.createDirectories(targetDirectory, "database", "reports");
-            fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
-            fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
-            fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
-            fileManager.copyFile("./reports/allGRNs.jasper", targetDirectory + "/reports/allGRNs.jasper");
-            fileManager.copyFile("./reports/allProducts.jasper", targetDirectory + "/reports/allProducts.jasper");
-            fileManager.copyFile("./reports/allSuppliers.jasper", targetDirectory + "/reports/allSuppliers.jasper");
-            fileManager.copyFile("./reports/customer.jasper", targetDirectory + "/reports/customer.jasper");
-            fileManager.copyFile("./reports/employee.jasper", targetDirectory + "/reports/employee.jasper");
-            fileManager.copyFile("./reports/grn.jasper", targetDirectory + "/reports/grn.jasper");
-            fileManager.copyFile("./reports/invoice_report.jasper", targetDirectory + "/reports/invoice_report.jasper");
-            fileManager.copyFile("./reports/print.jasper", targetDirectory + "/reports/print.jasper");
-            fileManager.copyFile("./reports/product.jasper", targetDirectory + "/reports/product.jasper");
-            fileManager.copyFile("./reports/reportsearch.jasper", targetDirectory + "/reports/reportsearch.jasper");
-            fileManager.copyFile("./reports/supplier.jasper", targetDirectory + "/reports/supplier.jasper");
-            fileManager.copyFile("./reports/mini_logo.png", targetDirectory + "/reports/mini_logo.png");
-            fileManager.copyFile("./reports/logo.png", targetDirectory + "/reports/logo.png");
-        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -668,6 +689,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottom_panel;
+    private javax.swing.JLabel date;
     private javax.swing.ButtonGroup home_btn_grp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -705,6 +727,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton8;
     private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JPanel panel_load;
+    private javax.swing.JLabel time;
     private javax.swing.JPanel top_panel;
     // End of variables declaration//GEN-END:variables
 }

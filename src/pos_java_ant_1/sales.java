@@ -328,7 +328,7 @@ public class sales extends javax.swing.JPanel {
         unit_price.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         unit_price.setText("00.00");
 
-        customer_combo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        customer_combo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         customer_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         customer_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,7 +336,6 @@ public class sales extends javax.swing.JPanel {
             }
         });
 
-        product_combo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         product_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         product_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -475,7 +474,7 @@ public class sales extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(qty, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(bar)
                                 .addComponent(jLabel4)

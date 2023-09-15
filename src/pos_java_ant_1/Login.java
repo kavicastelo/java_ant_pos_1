@@ -7,9 +7,19 @@ package pos_java_ant_1;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +42,7 @@ public class Login extends javax.swing.JFrame {
     public void login(){
         String name = uname.getText();
         String pass = pwd.getText();
+        int i = Integer.valueOf(attempts.getText());
         
         try {
             Statement s = db.myCon().createStatement();
@@ -46,14 +57,21 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Login Successfully!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Password Incorrect!");
+                    i--;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "User not found!");
+                i--;
             }
             
         } catch (SQLException e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Somethinds wrong!");
+        }
+        attempts.setText(String.valueOf(i));
+        if (i<0) {
+            JOptionPane.showMessageDialog(null, "Login attemts are reach to end. try again later! Good bye!");
+            System.exit(0);
         }
     }
 
@@ -79,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        attempts = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
@@ -160,8 +178,8 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Attempts Remaining :");
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("3");
+        attempts.setForeground(new java.awt.Color(255, 255, 255));
+        attempts.setText("3");
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("OR");
@@ -197,7 +215,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(attempts, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 143, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
@@ -226,7 +244,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(attempts))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -361,24 +379,60 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
         //</editor-fold>
+        String targetDirectory = "C:/Flexiart POS";
+        Path path = Paths.get(targetDirectory);
+        
+        FileManager fileManager = new FileManager();
+        
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            System.out.println("The directory exists.");
+        } else {
+            fileManager.createDirectories(targetDirectory, "database", "reports", "lib");
+            fileManager.copyFile("./POS.exe", targetDirectory + "/POS.exe");
+            fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
+            fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
+            fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
+            fileManager.copyFile("./reports/allGRNs.jasper", targetDirectory + "/reports/allGRNs.jasper");
+            fileManager.copyFile("./reports/allProducts.jasper", targetDirectory + "/reports/allProducts.jasper");
+            fileManager.copyFile("./reports/allSuppliers.jasper", targetDirectory + "/reports/allSuppliers.jasper");
+            fileManager.copyFile("./reports/customer.jasper", targetDirectory + "/reports/customer.jasper");
+            fileManager.copyFile("./reports/employee.jasper", targetDirectory + "/reports/employee.jasper");
+            fileManager.copyFile("./reports/grn.jasper", targetDirectory + "/reports/grn.jasper");
+            fileManager.copyFile("./reports/invoice_report.jasper", targetDirectory + "/reports/invoice_report.jasper");
+            fileManager.copyFile("./reports/print.jasper", targetDirectory + "/reports/print.jasper");
+            fileManager.copyFile("./reports/product.jasper", targetDirectory + "/reports/product.jasper");
+            fileManager.copyFile("./reports/reportsearch.jasper", targetDirectory + "/reports/reportsearch.jasper");
+            fileManager.copyFile("./reports/supplier.jasper", targetDirectory + "/reports/supplier.jasper");
+            fileManager.copyFile("./reports/mini_logo.png", targetDirectory + "/reports/mini_logo.png");
+            fileManager.copyFile("./reports/logo.png", targetDirectory + "/reports/logo.png");
+            fileManager.copyFile("./lib/AbsoluteLayout.jar", targetDirectory + "/lib/AbsoluteLayout.jar");
+            fileManager.copyFile("./lib/commons-beanutils-1.8.2.jar", targetDirectory + "/lib/commons-beanutils-1.8.2.jar");
+            fileManager.copyFile("./lib/commons-collections-3.2.1.jar", targetDirectory + "/lib/commons-collections-3.2.1.jar");
+            fileManager.copyFile("./lib/commons-digester-2.1.jar", targetDirectory + "/lib/commons-digester-2.1.jar");
+            fileManager.copyFile("./lib/commons-javaflow-20060411.jar", targetDirectory + "/lib/commons-javaflow-20060411.jar");
+            fileManager.copyFile("./lib/commons-logging-1.1.jar", targetDirectory + "/lib/commons-logging-1.1.jar");
+            fileManager.copyFile("./lib/groovy-all-2.0.1.jar", targetDirectory + "/lib/groovy-all-2.0.1.jar");
+            fileManager.copyFile("./lib/h2-1.3.176.jar", targetDirectory + "/lib/h2-1.3.176.jar");
+            fileManager.copyFile("./lib/iText-2.1.7.js2.jar", targetDirectory + "/lib/iText-2.1.7.js2.jar");
+            fileManager.copyFile("./lib/jasperreports-5.6.0.jar", targetDirectory + "/lib/jasperreports-5.6.0.jar");
+            fileManager.copyFile("./lib/jcalendar-1.4.jar", targetDirectory + "/lib/jcalendar-1.4.jar");
+            fileManager.copyFile("./lib/jfreechart-1.0.12.jar", targetDirectory + "/lib/jfreechart-1.0.12.jar");
+            fileManager.copyFile("./lib/mysql-connector-java-5.1.22-bin.jar", targetDirectory + "/lib/mysql-connector-java-5.1.22-bin.jar");
+            fileManager.copyFile("./lib/poi-3.7-20101029.jar", targetDirectory + "/lib/poi-3.7-20101029.jar");
+            
+        }
 
+        try {
+            String targetPath = "C:\\\\Flexiart POS\\\\POS.exe\""; // Replace with your actual software path
+            String shortcutPath = System.getProperty("user.home") + "\\Desktop\\Flexiart POS.lnk"; // Customize your shortcut name
+
+            createShortcut(targetPath, shortcutPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -386,8 +440,16 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static void createShortcut(String targetPath, String shortcutPath) throws IOException {
+        try (PrintWriter writer = new PrintWriter(shortcutPath)) {
+            writer.println("[InternetShortcut]");
+            writer.println("URL=file:///" + targetPath.replace("\\", "/"));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel attempts;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -397,7 +459,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
