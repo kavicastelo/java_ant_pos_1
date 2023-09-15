@@ -585,7 +585,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        setBounds(5, 5, 1700, 850);
+        setBounds(5, 5, 1550, 580);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         top_panel.setVisible(false);
         bottom_panel.setVisible(false);

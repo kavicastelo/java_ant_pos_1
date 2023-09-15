@@ -5,14 +5,19 @@
 package pos_java_ant_1;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author KAVI
  */
 public class Signup extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
@@ -22,6 +27,52 @@ public class Signup extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setShape(new RoundRectangle2D.Double(0, 0, 410, 630, 40, 40));
 
+    }
+    
+    public void save(){
+        String name = uname.getText();
+        String pass = pwd.getText();
+        
+        try {
+            Statement s = db.myCon().createStatement();
+            s.executeUpdate(" INSERT INTO auth (user,pass) VALUES ('"+name+"','"+pass+"')");
+            uname.setText("");
+            pwd.setText("");
+            JOptionPane.showMessageDialog(null, "Registered Successfully!");
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            try {
+                Statement st = db.myCon().createStatement();
+                st.executeUpdate("CREATE TABLE `auth` (\n" +
+"  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+"  `user` VARCHAR(50) NOT NULL,\n" +
+"  `pass` VARCHAR(10) NOT NULL\n" +
+")");
+                JOptionPane.showMessageDialog(null, "Please try again in first attemt when application launch");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+    
+    public boolean isExists(){
+        String name = uname.getText();
+        
+        try {
+            Statement s = db.myCon().createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM auth WHERE user = '"+name+"'");
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Somethinds wrong!");
+        }
+        return false;
     }
 
     /**
@@ -41,8 +92,8 @@ public class Signup extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        uname = new javax.swing.JTextField();
+        pwd = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -88,23 +139,38 @@ public class Signup extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PASSWORD");
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setToolTipText("");
-        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
+        uname.setBackground(new java.awt.Color(51, 51, 51));
+        uname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        uname.setForeground(new java.awt.Color(255, 255, 255));
+        uname.setToolTipText("");
+        uname.setCaretColor(new java.awt.Color(255, 255, 255));
+        uname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                unameKeyReleased(evt);
+            }
+        });
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setToolTipText("");
-        jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
+        pwd.setBackground(new java.awt.Color(51, 51, 51));
+        pwd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pwd.setForeground(new java.awt.Color(255, 255, 255));
+        pwd.setToolTipText("");
+        pwd.setCaretColor(new java.awt.Color(255, 255, 255));
+        pwd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pwdKeyReleased(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 204, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SIGN UP");
         jButton1.setActionCommand("signup");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("OR");
@@ -127,8 +193,8 @@ public class Signup extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
+                    .addComponent(uname)
+                    .addComponent(pwd)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,11 +221,11 @@ public class Signup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -245,6 +311,57 @@ public class Signup extends javax.swing.JFrame {
         s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String uname = this.uname.getText();
+        String pwd = this.pwd.getText();
+        
+        if (uname.isEmpty() || pwd.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Both fields are required");
+        } else {
+            if (pwd.matches("[a-z A-Z 0-9]{6,10}") || uname.matches("[a-z A-Z 0-9]{6,10}")) {
+                if (isExists()) {
+                    JOptionPane.showMessageDialog(null, "User already exists!");
+                } else {
+                    save();
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "incorrect input. use only letters and numbers. 6-10 characters required!");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void unameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_unameKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            pwd.selectAll();
+            pwd.requestFocus();
+        }
+    }//GEN-LAST:event_unameKeyReleased
+
+    private void pwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwdKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            String uname = this.uname.getText();
+        String pwd = this.pwd.getText();
+        
+        if (uname.isEmpty() || pwd.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Both fields are required");
+        } else {
+            if (pwd.matches("[a-z A-Z 0-9]{6,10}") || uname.matches("[a-z A-Z 0-9]{6,10}")) {
+                if (isExists()) {
+                    JOptionPane.showMessageDialog(null, "User already exists!");
+                } else {
+                    save();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "incorrect input. use only letters and numbers. 6-10 characters required!");
+            }
+        }
+        }
+    }//GEN-LAST:event_pwdKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -296,7 +413,7 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField pwd;
+    private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 }
