@@ -792,6 +792,8 @@ public class Grn extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String search = report_cid.getText();
+        if (!search.isEmpty() && search.matches("[0-9]{1,4}")) {
         try {
             HashMap map = new HashMap();
             map.put("grn_para", report_cid.getText());
@@ -801,7 +803,11 @@ public class Grn extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
-        
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter valid ID");
+            report_cid.selectAll();
+            report_cid.requestFocus();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

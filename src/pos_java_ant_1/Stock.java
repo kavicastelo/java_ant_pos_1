@@ -7,9 +7,12 @@ package pos_java_ant_1;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static pos_java_ant_1.Grn.suplier_ID;
 
 /**
  *
@@ -528,6 +531,20 @@ public class Stock extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        List<String> formFields = new ArrayList<>();
+        formFields.add(barcode.getText());
+        formFields.add(prd.getText());
+        formFields.add(addqty.getText());
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("00.00") || field.equals("yyyy-mm-dd")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        if (allFieldsFilled) {
         try {
                 String p_id = prd_id.getText();
                 double qt = Double.valueOf(stk.getText());
@@ -548,6 +565,9 @@ public class Stock extends javax.swing.JPanel {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "Somethings wrong! try again!");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select product and quantity correctly!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
