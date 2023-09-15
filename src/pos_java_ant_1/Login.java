@@ -5,8 +5,10 @@
 package pos_java_ant_1;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -391,6 +393,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             fileManager.createDirectories(targetDirectory, "database", "reports", "lib");
             fileManager.copyFile("./POS.exe", targetDirectory + "/POS.exe");
+            fileManager.copyFile("./mini_logo.ico", targetDirectory + "/mini_logo.ico");
             fileManager.copyFile("./database/h2/bin/database/ant_pos.h2.db", targetDirectory + "/database/ant_pos.h2.db");
             fileManager.copyFile("./reports/allCustomers.jasper", targetDirectory + "/reports/allCustomers.jasper");
             fileManager.copyFile("./reports/allEmployees.jasper", targetDirectory + "/reports/allEmployees.jasper");
@@ -425,20 +428,20 @@ public class Login extends javax.swing.JFrame {
         }
 
         try {
-            String targetPath = "C:\\\\Flexiart POS\\\\POS.exe\""; // Replace with your actual software path
+            String targetPath = "C:\\Flexiart POS\\POS.exe"; // Replace with your actual software path
             String shortcutPath = System.getProperty("user.home") + "\\Desktop\\Flexiart POS.lnk"; // Customize your shortcut name
 
             createShortcut(targetPath, shortcutPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
             }
         });
+    
     }
     
     public static void createShortcut(String targetPath, String shortcutPath) throws IOException {

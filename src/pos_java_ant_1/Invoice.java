@@ -106,7 +106,7 @@ public class Invoice extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -115,7 +115,7 @@ public class Invoice extends javax.swing.JPanel {
                 "Sales ID", "Invoice ID", "Customer ID", "Customer name", "Total Quantity", "Bill", "Status", "Balance"
             }
         ));
-        jTable1.setRowHeight(24);
+        jTable1.setRowHeight(20);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

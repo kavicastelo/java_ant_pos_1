@@ -717,7 +717,7 @@ public class Product extends javax.swing.JPanel {
             }
         });
 
-        jTable2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -726,7 +726,7 @@ public class Product extends javax.swing.JPanel {
                 "ID", "Category"
             }
         ));
-        jTable2.setRowHeight(24);
+        jTable2.setRowHeight(20);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
@@ -799,7 +799,7 @@ public class Product extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Product :");
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -808,7 +808,7 @@ public class Product extends javax.swing.JPanel {
                 "ID", "Name", "Barcode", "Buy Price", "Sell Price", "Qty", "Default Unit", "Default Type", "MFD", "EXP", "Supplier ID", "Supplier", "Category", "Brand", "Description"
             }
         ));
-        jTable1.setRowHeight(24);
+        jTable1.setRowHeight(20);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

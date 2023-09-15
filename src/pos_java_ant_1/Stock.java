@@ -206,7 +206,7 @@ public class Stock extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -215,7 +215,7 @@ public class Stock extends javax.swing.JPanel {
                 "ID", "Product name", "Barcode", "Cost", "Sell", "QTY", "Supplier ID", "Suplier"
             }
         ));
-        jTable1.setRowHeight(24);
+        jTable1.setRowHeight(20);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

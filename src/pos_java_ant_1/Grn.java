@@ -270,7 +270,7 @@ public class Grn extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -279,7 +279,7 @@ public class Grn extends javax.swing.JPanel {
                 "GRNID", "Name", "Bar Code ", "QTY", "Exp. Date", "Cost Price", "Sell price", "Total Price"
             }
         ));
-        jTable1.setRowHeight(24);
+        jTable1.setRowHeight(20);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());

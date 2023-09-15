@@ -182,10 +182,10 @@ public class Employee extends javax.swing.JPanel {
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Search ID :");
 
-        csearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         csearch.setText("0");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -193,13 +193,13 @@ public class Employee extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Org. Name :");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Org. Phone :");
 
-        cname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cname.setText("0");
         cname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -207,7 +207,7 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        ctp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ctp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ctp.setText("0");
         ctp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -215,10 +215,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("BillingAddress :");
 
-        addr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        addr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addr.setText("0");
         addr.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -226,10 +226,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Shipping Address :");
 
-        type.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        type.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         type.setText("0");
         type.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -237,7 +237,7 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        bank.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bank.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bank.setText("0");
         bank.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -245,7 +245,7 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        city.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        city.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         city.setText("0");
         city.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -253,10 +253,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Bank Acc. No. :");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("City :");
 
         addr_check.setText("use billing address");
@@ -324,10 +324,10 @@ public class Employee extends javax.swing.JPanel {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contact Person", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Person Name :");
 
-        con_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        con_name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         con_name.setText("0");
         con_name.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -335,10 +335,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Mobile :");
 
-        con_tp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        con_tp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         con_tp.setText("0");
         con_tp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -346,7 +346,7 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        cname2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cname2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cname2.setText("0");
         cname2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -354,10 +354,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Person Role :");
 
-        con_online.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        con_online.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         con_online.setText("0");
         con_online.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -365,13 +365,13 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Online :");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Email :");
 
-        con_email.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        con_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         con_email.setText("0");
         con_email.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -398,7 +398,7 @@ public class Employee extends javax.swing.JPanel {
                     .addComponent(cname2, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                     .addComponent(con_online)
                     .addComponent(con_email))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,10 +530,10 @@ public class Employee extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Add Employee", jPanel3);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Search (Organization) :");
 
-        csearchtbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        csearchtbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         csearchtbl.setText("0");
         csearchtbl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -541,7 +541,7 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -552,7 +552,7 @@ public class Employee extends javax.swing.JPanel {
         ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setRowHeight(24);
+        jTable1.setRowHeight(20);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -560,7 +560,7 @@ public class Employee extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        csearchtblcity.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        csearchtblcity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         csearchtblcity.setText("0");
         csearchtblcity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -568,10 +568,10 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("(City) :");
 
-        csearchtbltp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        csearchtbltp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         csearchtbltp.setText("0");
         csearchtbltp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -579,13 +579,13 @@ public class Employee extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("(Org. TP) :");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("(Per. Email) :");
 
-        csearchtblemail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        csearchtblemail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         csearchtblemail.setText("0");
         csearchtblemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -600,6 +600,7 @@ public class Employee extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -615,8 +616,7 @@ public class Employee extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(csearchtblemail, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addComponent(csearchtblemail, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -636,7 +636,7 @@ public class Employee extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addComponent(csearchtbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -672,7 +672,7 @@ public class Employee extends javax.swing.JPanel {
                     .addComponent(report_cid)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                .addContainerGap(751, Short.MAX_VALUE))
+                .addContainerGap(658, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -724,7 +724,7 @@ public class Employee extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 922, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
