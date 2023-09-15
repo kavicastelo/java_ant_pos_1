@@ -8,7 +8,9 @@ import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -638,6 +640,23 @@ public class Grn extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        List<String> formFields = new ArrayList<>();
+        formFields.add(exp.getText());
+        formFields.add(unit_price.getText());
+        formFields.add(sell_price.getText());
+        formFields.add(suplier_ID);
+        formFields.add(qty.getText());
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("00.00") || field.equals("yyyy-mm-dd")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
         double tot = 0;
         double qt = Double.valueOf(qty.getText());
         double cost = Double.valueOf(unit_price.getText());
@@ -664,6 +683,9 @@ public class Grn extends javax.swing.JPanel {
         total();
         discount();
 //        pay();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select supplier and product correctly!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -702,6 +724,8 @@ public class Grn extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        int row = jTable1.getRowCount();
+        if (row != 0) {
         try {
             //	id	grn	sid	bar	name	qty	cost	sell	exp	sub	dis	net	
             DefaultTableModel tm = (DefaultTableModel)jTable1.getModel();
@@ -750,6 +774,9 @@ public class Grn extends javax.swing.JPanel {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "No Items to found in table!");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
