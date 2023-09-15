@@ -6,12 +6,14 @@ package pos_java_ant_1;
 
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class Product extends javax.swing.JPanel {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+    Date date = new Date();
     /**
      * Creates new form Customer
      */
@@ -33,6 +36,9 @@ public class Product extends javax.swing.JPanel {
         load_supliers();
         tableLoadCat();
         load_categories();
+        
+        mf.setDate(date);
+        ex.setDate(date);
     }
     
     public void tableLoad(){
@@ -289,7 +295,7 @@ public class Product extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(psearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(634, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +552,7 @@ public class Product extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(psup, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                        .addComponent(psup)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sup_cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
@@ -628,12 +634,12 @@ public class Product extends javax.swing.JPanel {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(173, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 20, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1156,7 +1162,8 @@ public class Product extends javax.swing.JPanel {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         String id = psearch.getText();
-
+        
+        if (!id.isEmpty() && id.matches("[0-9]{1,4}")) {
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" DELETE FROM product WHERE pid='"+id+"'");
@@ -1182,10 +1189,31 @@ public class Product extends javax.swing.JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Delete failed!");
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter valid ID");
+            psearch.selectAll();
+            psearch.requestFocus();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        
+        List<String> formFields = new ArrayList<>();
+        formFields.add(pname.getText());
+        formFields.add(pbar.getText());
+        formFields.add(pprice.getText());
+        formFields.add(sell_price.getText());
+        formFields.add(pqty.getText());
+        formFields.add(dunit.getText());
+        formFields.add(dtype.getText());
+        formFields.add(addcat.getText());
+        formFields.add(psup.getText());
+        formFields.add(brd.getText());
+        formFields.add(desc.getText());
+        formFields.add(sdf.format(mf.getDate()));
+        formFields.add(sdf.format(ex.getDate()));
+        
         String name = pname.getText();
         String bar = pbar.getText();
         String qty = pqty.getText();
@@ -1201,7 +1229,17 @@ public class Product extends javax.swing.JPanel {
         String cat = addcat.getText();
         String brand = brd.getText();
         String des = desc.getText();
+        
+        boolean allFieldsFilled = true;
 
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("0")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" UPDATE product SET name='"+name+"', bar='"+bar+"', qty='"+qty+"', d_unit='"+du+"', d_type='"+dt+"', mfd='"+mfd+"', exp='"+exp+"', price='"+price+"', sell_p='"+sell+"', sup='"+sup+"', sup_name='"+s_name+"', cat='"+cat+"', brand='"+brand+"', des='"+des+"' WHERE pid='"+id+"'");
@@ -1227,12 +1265,16 @@ public class Product extends javax.swing.JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "product not updated! try again");
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the details");
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String search = psearch.getText();
-
+        
+        if (!search.isEmpty() && search.matches("[0-9]{1,4}")) {
         try {
             Statement s = db.myCon().createStatement();
             ResultSet rs = s.executeQuery(" SELECT * FROM product WHERE pid = '"+search+"'");
@@ -1285,11 +1327,44 @@ public class Product extends javax.swing.JPanel {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter valid user ID");
+            psearch.selectAll();
+            psearch.requestFocus();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        save();
+        List<String> formFields = new ArrayList<>();
+        formFields.add(pname.getText());
+        formFields.add(pbar.getText());
+        formFields.add(pprice.getText());
+        formFields.add(sell_price.getText());
+        formFields.add(pqty.getText());
+        formFields.add(dunit.getText());
+        formFields.add(dtype.getText());
+        formFields.add(addcat.getText());
+        formFields.add(psup.getText());
+        formFields.add(brd.getText());
+        formFields.add(desc.getText());
+//        formFields.add(sdf.format(mf.getDate()));
+//        formFields.add(sdf.format(ex.getDate()));
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("0")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
+            save();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the details");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void cat_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cat_idMouseClicked
@@ -1474,6 +1549,8 @@ public class Product extends javax.swing.JPanel {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
+        String search = report_cid.getText();
+        if (!search.isEmpty() && search.matches("[0-9]{1,4}")) {
         try {
             HashMap map = new HashMap();
             map.put("pid_para", report_cid.getText());
@@ -1483,7 +1560,11 @@ public class Product extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
         }
-        
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter valid ID");
+            report_cid.selectAll();
+            report_cid.requestFocus();
+        }
     }//GEN-LAST:event_jButton14ActionPerformed
 
 
