@@ -8,7 +8,9 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -751,13 +753,40 @@ public class Customer extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        save();
+        List<String> formFields = new ArrayList<>();
+        formFields.add(cname.getText());
+        formFields.add(ctp.getText());
+        formFields.add(addr.getText());
+        formFields.add(type.getText());
+        formFields.add(bank.getText());
+        formFields.add(city.getText());
+        formFields.add(cname2.getText());
+        formFields.add(con_name.getText());
+        formFields.add(con_tp.getText());
+        formFields.add(con_email.getText());
+        formFields.add(con_online.getText());
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("0")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
+            save();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the details");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String search = csearch.getText();
         
+        if (!search.isEmpty() && search.matches("[0-9]{1,4}")) {
         try {
             Statement s = db.myCon().createStatement();
             ResultSet rs = s.executeQuery(" SELECT * FROM customer WHERE cid = '"+search+"'");
@@ -797,6 +826,11 @@ public class Customer extends javax.swing.JPanel {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter valid user ID");
+            csearch.selectAll();
+            csearch.requestFocus();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -814,6 +848,29 @@ public class Customer extends javax.swing.JPanel {
         String c_email = con_email.getText();
         String c_online = con_online.getText();
         
+        List<String> formFields = new ArrayList<>();
+        formFields.add(cname.getText());
+        formFields.add(ctp.getText());
+        formFields.add(addr.getText());
+        formFields.add(type.getText());
+        formFields.add(bank.getText());
+        formFields.add(city.getText());
+        formFields.add(cname2.getText());
+        formFields.add(con_name.getText());
+        formFields.add(con_tp.getText());
+        formFields.add(con_email.getText());
+        formFields.add(con_online.getText());
+        
+        boolean allFieldsFilled = true;
+
+        for (String field : formFields) {
+            if (field.isEmpty() || field.equals("0")) {
+                allFieldsFilled = false;
+                break;
+            }
+        }
+        
+        if (allFieldsFilled) {
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" UPDATE customer SET name='"+name+"', tp='"+tp+"', addr='"+adr+"', shipping_addr='"+ship+"', bank='"+bnk+"', city='"+cty+"', c_name='"+c_name+"', c_per='"+c_per+"', c_tp='"+c_tp+"', c_email='"+c_email+"', c_online='"+c_online+"' WHERE cid='"+id+"'");
@@ -834,12 +891,16 @@ public class Customer extends javax.swing.JPanel {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the details");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String id = csearch.getText();
         
+        if (!id.isEmpty() && id.matches("[0-9]{1,4}")) {
         try {
             Statement s = db.myCon().createStatement();
             s.executeUpdate(" DELETE FROM customer WHERE cid='"+id+"'");
@@ -859,6 +920,11 @@ public class Customer extends javax.swing.JPanel {
             
         } catch (SQLException e) {
             System.out.println(e);
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter valid ID");
+            csearch.selectAll();
+            csearch.requestFocus();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1036,6 +1102,8 @@ public class Customer extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String search = report_cid.getText();
+        if (!search.isEmpty() && search.matches("[0-9]{1,4}")) {
         try {
             HashMap map = new HashMap();
             map.put("para_cid", report_cid.getText());
@@ -1044,6 +1112,11 @@ public class Customer extends javax.swing.JPanel {
             rw.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Somethings wrong in your system!");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter valid ID");
+            report_cid.selectAll();
+            report_cid.requestFocus();
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
