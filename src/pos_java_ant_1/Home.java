@@ -348,7 +348,7 @@ public class Home extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("New Invoice");
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -529,7 +529,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
         // TODO add your handling code here:
-        Grn g = new Grn();
+        Purchase g = new Purchase();
         JPLoad.jPanelLoader(panel_load, g);
     }//GEN-LAST:event_jToggleButton9ActionPerformed
 
